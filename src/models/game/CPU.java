@@ -11,7 +11,7 @@ public class CPU extends Jugador{
      * @param juego
      * @return la carta escogida por el models.game.CPU
      */
-    public Carta escogerCarta(Juego juego){
+    private Carta escogerCarta(Juego juego){
         Carta escogida = null;
         for(Carta carta : this.getCartas().getMazo()){
             if(carta.esJugable(juego)){
@@ -26,7 +26,7 @@ public class CPU extends Jugador{
      * EL models.game.CPU escoge un color de manera aleatoria para cuando corresponde un cambio de color
      * @return el color escogido por el models.game.CPU
      */
-    public char escogerColor(){
+    private char escogerColor(){
         int numero = (int) (Math.random()*4);
         char color = ' ';
         switch(numero){
@@ -40,6 +40,15 @@ public class CPU extends Jugador{
                 break;
         }
         return color;
+    }
+
+    @Override
+    public void jugar(Juego juego, Carta carta){
+        Carta c = escogerCarta(juego);
+        if(c instanceof CartaComodin){
+            juego.setColorActual(escogerColor());
+        }
+        super.jugar(juego, c);
     }
 
     /**

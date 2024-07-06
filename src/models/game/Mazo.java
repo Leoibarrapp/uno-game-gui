@@ -71,7 +71,7 @@ public class Mazo {
 
     /**
      * elimina una carta del mazo
-     * @param carta la carta a eliminar
+     * @param carta la carta a eliminarBoton
      */
     public void eliminarCarta(Carta carta) {
         mazo.remove(carta);
@@ -79,7 +79,7 @@ public class Mazo {
 
     /**
      * elimina una carta del mazo
-     * @param index la posicion de la carta a eliminar
+     * @param index la posicion de la carta a eliminarBoton
      */
     public void eliminarCarta(int index) {
         mazo.remove(index);

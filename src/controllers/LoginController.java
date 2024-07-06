@@ -94,6 +94,8 @@ public class LoginController {
 
     @FXML
     protected void onBtnPartidaNuevaClick(){
+        System.out.println();
+
 //        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //
         texto1.setText("Creando partida nueva...");
@@ -110,8 +112,10 @@ public class LoginController {
         juego = new Juego(descarte, pila, jugadores);
         juego.iniciarJuego();
 
-        System.out.println(juego.getJugadores().getFirst());
         System.out.println(juego.getMazoJuego().getTope());
+
+        System.out.println(juego.getJugadores().getLast());
+        System.out.println(juego.getJugadores().getFirst());
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));

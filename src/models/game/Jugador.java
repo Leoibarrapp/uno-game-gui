@@ -1,5 +1,7 @@
 package models.game;
 
+import models.ContenedorCartas;
+
 public class Jugador{
     private String nombre;
     private Mazo cartas;

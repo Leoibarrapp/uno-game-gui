@@ -35,7 +35,7 @@
                   <VBox alignment="CENTER">
                      <children>
                         <Label text="JUGADOR" />
-                        <ContenedorCartas fx:id="cartasJ" spacing="20.0" style="-fx-background-colr: red;">
+                        <ContenedorCartas fx:id="contenedorJ" spacing="20.0" style="-fx-background-colr: red;">
                            <padding>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </padding>

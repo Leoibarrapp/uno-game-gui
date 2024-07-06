@@ -1,21 +1,25 @@
 package controllers;
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 import models.ContenedorCartas;
+import models.GameModel;
 import models.game.Carta;
-
-import java.util.ArrayList;
 
 import static controllers.LoginController.juego;
 
 public class GameController {
 
     @FXML
-    private ContenedorCartas cartasJ = new ContenedorCartas();
+    private ContenedorCartas contenedorJ = new ContenedorCartas();
     @FXML
     private ContenedorCartas cartasC = new ContenedorCartas();
+    @FXML
+    private static Carta carta;
+    @FXML
+    private static Button boton;
 
     public void onSalirClick(){
 //        try {
@@ -32,22 +36,35 @@ public class GameController {
     }
 
     public void onBtnAgarrarCartaClick(){
+
+
         juego.getJugadores().getFirst().agarrarCarta(juego);
         System.out.println(juego.getJugadores().getFirst() + "ha agarrado carta");
 
-        cartasJ.agregar(juego.getJugadores().getFirst().getCartas().getTope());
+        contenedorJ.agregarBoton(contenedorJ.crearBoton(juego.getJugadores().getFirst().getCartas().getTope()));
+
+        GameModel.jugadaCPU(juego.getJugadores().getLast());
+        System.out.println(juego.getMazoJuego().getTope());
+
+        System.out.println(juego.getJugadores().getLast());
+    }
+
+    public static void onBtnCartaClick(Button b){
+        String id = b.getId();
+        carta = juego.getJugadores().getFirst().buscarCarta(id);
+        boton = b;
     }
 
     public void onBtnJugarCartaClick(){
-        if(juego.getJugadores().getFirst().getCartas().getTope().esJugable(juego)){
-            juego.getJugadores().getFirst().jugar(juego, juego.getJugadores().getFirst().getCartas().getTope());
+        if(carta.esJugable(juego)){
+            juego.getJugadores().getFirst().jugar(juego, carta);
+            contenedorJ.eliminarBoton(boton);
+            System.out.println("eliminado");
+            System.out.println(boton.getId());
+
+
         }
-        System.out.println(juego.getJugadores().getFirst());
 
-        System.out.println(juego.getMazoJuego().getTope());
-    }
-
-    private void eliminarBotonCarta(){
     }
 
 }
