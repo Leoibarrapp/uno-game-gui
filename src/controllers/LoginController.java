@@ -12,8 +12,10 @@ import javafx.stage.Stage;
 import models.game.*;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class LoginController {
+    public static Juego juego;
 
     @FXML
     private Label texto1;
@@ -25,9 +27,6 @@ public class LoginController {
     private Button btnPartidaNueva;
     @FXML
     private Button btnCargarPartida;
-
-    @FXML
-    protected static Juego juego;
 
     public LoginController() throws IOException {
     }
@@ -99,18 +98,20 @@ public class LoginController {
 //
         texto1.setText("Creando partida nueva...");
         texto2.setText("Bienvenido, " + campoUsuario.getText());
-//
-//        Mazo pila = new Mazo();
-//        pila.crear(); pila.barajear();
-//
-//        Mazo descarte = new Mazo();
-//
-//        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
-//        jugadores.add(new Jugador(campoUsuario.getText())); jugadores.add(new CPU());
-//
-//        juego = new Juego(descarte, pila, jugadores);
-//        juego.iniciarJuego();
 
+        Mazo pila = new Mazo();
+        pila.crear(); pila.barajear();
+
+        Mazo descarte = new Mazo();
+
+        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+        jugadores.add(new Jugador(campoUsuario.getText())); jugadores.add(new CPU());
+
+        juego = new Juego(descarte, pila, jugadores);
+        juego.iniciarJuego();
+
+        System.out.println(juego.getJugadores().getFirst());
+        System.out.println(juego.getMazoJuego().getTope());
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));

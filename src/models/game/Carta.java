@@ -3,6 +3,7 @@ package models.game;
 public abstract class Carta {
     private final char color;
     private final String tipo;
+    private final String urlImagen = "";
 
     /**
      * constructor de la carta, es abstracta, solo sirve para instanciar sus hijos
@@ -26,6 +27,9 @@ public abstract class Carta {
 
     public abstract void usar(Juego juego);
 
+    public String getUrlImagen() {
+        return urlImagen;
+    }
 
     /**
      * Sobreescribe toString para imprimir una models.game.Carta

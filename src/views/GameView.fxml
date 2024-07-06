@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<?import models.ContenedorCartas?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GameController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
@@ -21,7 +22,7 @@
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
-                  <Button mnemonicParsing="false" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#onBtnJugarCartaClick" BorderPane.alignment="CENTER">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic></Button>
@@ -34,47 +35,11 @@
                   <VBox alignment="CENTER">
                      <children>
                         <Label text="JUGADOR" />
-                        <HBox spacing="20.0" style="-fx-background-colr: red;">
+                        <ContenedorCartas fx:id="cartasJ" spacing="20.0" style="-fx-background-colr: red;">
                            <padding>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </padding>
-                           <children>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic></Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                           </children>
-                        </HBox>
+                        </ContenedorCartas>
                      </children>
                   </VBox>
                </children>
@@ -84,11 +49,11 @@
             <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0" spacing="2.0" BorderPane.alignment="CENTER">
                <children>
                   <Label text="AGARRAR CARTA" />
-                  <Button mnemonicParsing="false">
+                  <Button mnemonicParsing="false" onAction="#onBtnAgarrarCartaClick">
                      <graphic>
                         <ImageView fitHeight="132.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@cartas/Carta%20Volteada%20Reescalada.png" />
+                              <Image url="@cartas/carta_volteada.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -105,48 +70,11 @@
                   <VBox alignment="CENTER">
                      <children>
                         <Label text="CPU" />
-                        <HBox spacing="20.0" style="-fx-background-colr: red;">
+                        <ContenedorCartas fx:id="cartasC" spacing="20.0" style="-fx-background-colr: red;">
                            <padding>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </padding>
-                           <children>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Button">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                           </children>
-                        </HBox>
+                        </ContenedorCartas>
                      </children>
                   </VBox>
                </children>
