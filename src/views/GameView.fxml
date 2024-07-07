@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -15,7 +16,6 @@
 <?import models.ContenedorCartasJ?>
 <?import models.ContenedorCartasC?>
 
-<?import javafx.scene.Cursor?>
 <VBox maxHeight="Infinity" maxWidth="Infinity" minHeight="900" minWidth="1400" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #2E69C7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GameController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: a;">
@@ -30,6 +30,7 @@
          <bottom>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
+                  <Label fx:id="cantCPU" text="cpu" />
                   <VBox alignment="CENTER">
                      <children>
                         <Label fx:id="textoUsuario" text="USUARIO" textFill="WHITE" />
@@ -40,6 +41,7 @@
                         </ContenedorCartasJ>
                      </children>
                   </VBox>
+                  <Label fx:id="cantUS" text="usuario" />
                </children>
             </HBox>
          </bottom>
@@ -57,7 +59,7 @@
             <VBox prefWidth="300.0" BorderPane.alignment="CENTER" />
          </left>
          <top>
-            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#onBtnSalirClick" prefHeight="42.0" prefWidth="87.0" text="Salir" visible="false" />
                   <VBox alignment="CENTER">
@@ -75,7 +77,7 @@
             </HBox>
          </top>
          <center>
-            <BorderPane prefHeight="434.0" prefWidth="688.0" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="434.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <center>
                   <Button fx:id="botonCartaActual" mnemonicParsing="false" onAction="#onBtnJugarCartaClick" BorderPane.alignment="CENTER">
                      <graphic>
@@ -123,8 +125,8 @@
                <left>
                   <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
                      <children>
-                        <ChoiceBox fx:id="boxEscogerColor" disable="true" prefHeight="50.0" prefWidth="55.0" />
-                        <Button fx:id="btnColorEscogido" disable="true" mnemonicParsing="false" onAction="#onBtnColorEscogidoClick" prefHeight="25.0" prefWidth="55.0" />
+                        <ChoiceBox fx:id="boxEscogerColor" disable="true" prefHeight="50.0" prefWidth="80.0" />
+                        <Button fx:id="btnColorEscogido" disable="true" mnemonicParsing="false" onAction="#onBtnColorEscogidoClick" prefHeight="25.0" prefWidth="80.0" />
                      </children>
                   </VBox>
                </left>

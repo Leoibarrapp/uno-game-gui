@@ -42,6 +42,8 @@ public class GameController {
     public Button btnColorEscogido;
     @FXML
     public Button botonAgarrarCarta;
+    public Label cantCPU;
+    public Label cantUS;
     @FXML
     private ContenedorCartasJ contenedorJ = new ContenedorCartasJ();
     @FXML
@@ -66,8 +68,8 @@ public class GameController {
 
         btnColorEscogido.setFont(customFont20);
 
-        textoEnJuegoAbajo.setFont(customFont20);
-        textoEnJuegoArriba.setFont(customFont20);
+        textoEnJuegoAbajo.setFont(customFont30);
+        textoEnJuegoArriba.setFont(customFont30);
 
         textoUsuario.setFont(customFont40);
         textoCPU.setFont(customFont40);
@@ -75,8 +77,6 @@ public class GameController {
         textoAgarrarCarta.setFont(customFont30);
 
         btnSalir.setFont(customFont20);
-
-
 
     }
 
@@ -98,7 +98,7 @@ public class GameController {
 
     public void onBtnJugarCartaClick() throws InterruptedException {
 
-        if(cartaActual.esJugable(juego)){
+        if((cartaActual != null) && (cartaActual.esJugable(juego))){
             textoEnJuegoArriba.setText("");
             textoEnJuegoAbajo.setText("");
             juego.getJugadores().getFirst().jugar(juego, cartaActual);
@@ -107,12 +107,10 @@ public class GameController {
 
             botonCartaActual.setGraphic(boton.getGraphic());
 
-            if(cartaActual instanceof CartaComodin){
+            if(cartaActual.getTipo().equals("T4")){
                 boxEscogerColor.setDisable(false);
                 btnColorEscogido.setDisable(false);
-                return;
-            }
-            if(cartaActual.getTipo().equals("T4")){
+
                 juego.getJugadores().getLast().agarrarCarta(juego);
                 contenedorC.agregarBoton(contenedorC.crearBoton());
 
@@ -153,11 +151,16 @@ public class GameController {
                                 textoEnJuegoArriba.setFont(customFont80);
                             }
                             else{
-                                Platform.runLater(() -> jugadaCPU(juego.getJugadores().getLast()));
+                                if(cartaActual.getTipo().equals("CC")){
+                                    boxEscogerColor.setDisable(false);
+                                    btnColorEscogido.setDisable(false);
+                                }
+                                else{
+                                    Platform.runLater(() -> jugadaCPU(juego.getJugadores().getLast()));
+                                }
+
                             }
                         }
-
-
                     }
                 }
             }
@@ -168,8 +171,8 @@ public class GameController {
             textoEnJuegoAbajo.setText("No puedes jugar esta carta");
         }
 
-        cartaActual = null;
-
+        cantUS.setText(juego.getJugadores().getFirst().getCartas().getMazo().size() + "");
+        cantCPU.setText(juego.getJugadores().getLast().getCartas().getMazo().size() + "");
     }
 
     public void jugadaCPU(Jugador cpu){
@@ -211,15 +214,13 @@ public class GameController {
                     contenedorJ.agregarBoton(contenedorJ.crearBoton(juego.getJugadores().getFirst().getCartas().getTope()));
                 }
                 else{
+                    setImage(botonCartaActual);
                     if(carta.getTipo().equals("R") || carta.getTipo().equals("S")){
                         textoEnJuegoArriba.setText("CPU repitió el turno");
                         jugadaCPU(juego.getJugadores().getLast());
                     }
                 }
             }
-
-
-
 
             if(juego.getJugadores().getLast().getCartas().getMazo().size() == 1){
                 textoEnJuegoAbajo.setText("¡CPU ha cantado UNO!");
@@ -235,25 +236,30 @@ public class GameController {
                     textoEnJuegoArriba.setFont(customFont80);
                 }
             }
-
-            setImage(botonCartaActual);
         }
         else {
-
             cpu.agarrarCarta(juego);
             contenedorC.agregarBoton(contenedorC.crearBoton());
-
         }
+
+        setImage(botonCartaActual);
+        cartaActual = null;
+        System.out.println(juego.getJugadores().getLast().getCartas().getMazo().size());
+        cantUS.setText(juego.getJugadores().getFirst().getCartas().getMazo().size() + "");
+        cantCPU.setText(juego.getJugadores().getLast().getCartas().getMazo().size() + "");
     }
 
     private void setImage(Button btn){
-        String url = cartaActual.getUrlImagen();
-        Image image = new Image(Objects.requireNonNull(ContenedorCartasJ.class.getResourceAsStream(url)));
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(132);
-        imageView.setFitWidth(85);
+        if(cartaActual != null){
+            String url = cartaActual.getUrlImagen();
+            Image image = new Image(Objects.requireNonNull(ContenedorCartasJ.class.getResourceAsStream(url)));
+            ImageView imageView = new ImageView(image);
+            imageView.setFitHeight(132);
+            imageView.setFitWidth(85);
 
-        btn.setGraphic(imageView);
+            btn.setGraphic(imageView);
+        }
+
     }
 
     public void onBtnSalirClick() {
