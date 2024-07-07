@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import static controllers.LoginController.juego;
+import static controllers.LoginController.nombreUsuario;
 import static models.UnoGame.*;
 
 public class GameController {
@@ -32,9 +33,9 @@ public class GameController {
     @FXML
     public Label textoUsuario;
     @FXML
-    public Label textoAgarrarCarta;
-    @FXML
     public Label textoCPU;
+    @FXML
+    public Label textoAgarrarCarta;
     @FXML
     public Button btnSalir;
     @FXML
@@ -42,8 +43,8 @@ public class GameController {
     public Button btnColorEscogido;
     @FXML
     public Button botonAgarrarCarta;
-    public Label cantCPU;
-    public Label cantUS;
+    @FXML
+    public Label textoEscogerCarta;
     @FXML
     private ContenedorCartasJ contenedorJ = new ContenedorCartasJ();
     @FXML
@@ -72,9 +73,12 @@ public class GameController {
         textoEnJuegoArriba.setFont(customFont30);
 
         textoUsuario.setFont(customFont40);
+        textoUsuario.setText(nombreUsuario);
+
         textoCPU.setFont(customFont40);
 
-        textoAgarrarCarta.setFont(customFont30);
+        textoAgarrarCarta.setFont(customFont20);
+        textoEscogerCarta.setFont(customFont20);
 
         btnSalir.setFont(customFont20);
 
@@ -138,7 +142,7 @@ public class GameController {
                     else{
 
                         if(juego.getJugadores().getFirst().getCartas().getMazo().size() == 1){
-                            textoEnJuegoAbajo.setText("¡USUARIO ha cantado UNO!");
+                            textoEnJuegoAbajo.setText("¡"+nombreUsuario+" ha cantado UNO!");
                         }
                         else{
                             if(juego.getJugadores().getFirst().getCartas().getMazo().isEmpty()){
@@ -147,7 +151,7 @@ public class GameController {
                                 botonCartaActual.setDisable(true);
                                 botonAgarrarCarta.setDisable(true);
                                 textoAgarrarCarta.setDisable(true);
-                                textoEnJuegoArriba.setText("¡USUARIO ha ganado!");
+                                textoEnJuegoArriba.setText("¡"+nombreUsuario+" ha ganado!");
                                 textoEnJuegoArriba.setFont(customFont80);
                             }
                             else{
@@ -170,9 +174,6 @@ public class GameController {
             cartaActual = null;
             textoEnJuegoAbajo.setText("No puedes jugar esta carta");
         }
-
-        cantUS.setText(juego.getJugadores().getFirst().getCartas().getMazo().size() + "");
-        cantCPU.setText(juego.getJugadores().getLast().getCartas().getMazo().size() + "");
     }
 
     public void jugadaCPU(Jugador cpu){
@@ -245,8 +246,6 @@ public class GameController {
         setImage(botonCartaActual);
         cartaActual = null;
         System.out.println(juego.getJugadores().getLast().getCartas().getMazo().size());
-        cantUS.setText(juego.getJugadores().getFirst().getCartas().getMazo().size() + "");
-        cantCPU.setText(juego.getJugadores().getLast().getCartas().getMazo().size() + "");
     }
 
     private void setImage(Button btn){

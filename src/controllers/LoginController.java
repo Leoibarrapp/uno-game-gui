@@ -17,22 +17,24 @@ import models.game.*;
 import java.io.*;
 import java.util.ArrayList;
 
-import static models.UnoGame.customFont20;
-import static models.UnoGame.customFont80;
+import static models.UnoGame.*;
 
 
 public class LoginController {
     public static Juego juego;
+    public static String nombreUsuario;
 
     @FXML
     public Label textoTitulo;
     @FXML
     public Label textoIntroduceUsuario;
     @FXML
+    public Label textoBienvenida1;
+    @FXML
     private Label textoBienvenida;
 
     @FXML
-    public TextField campoUsuario;
+    public  TextField campoUsuario;
     @FXML
     private Button btnPartidaNueva;
     @FXML
@@ -41,7 +43,8 @@ public class LoginController {
     @FXML
     public void initialize(){
         textoBienvenida.setFont(customFont20);
-        textoIntroduceUsuario.setFont(customFont20);
+        textoBienvenida1.setFont(customFont20);
+        textoIntroduceUsuario.setFont(customFont30);
         textoTitulo.setFont(customFont80);
         campoUsuario.setFont(customFont20);
 
@@ -56,7 +59,6 @@ public class LoginController {
 
     @FXML
     protected void getUsuario() throws IOException {
-        String usuario = campoUsuario.getText();
 
 //        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //        boolean usuarioExiste = false;
@@ -100,8 +102,10 @@ public class LoginController {
     @FXML
     protected void onBtnCargarPartidaClick() {
 
-        textoBienvenida.setText("Cargando partida anterior..." +
-                "\nBienvenido de nuevo, " + campoUsuario.getText());
+        nombreUsuario = campoUsuario.getText();
+        textoBienvenida.setText("Cargando partida anterior...");
+        textoBienvenida1.setText("Bienvenido de nuevo, " + nombreUsuario);
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1000, 800);
@@ -123,8 +127,10 @@ public class LoginController {
     protected void onBtnPartidaNuevaClick(){
 //        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //
-        textoBienvenida.setText("Creando partida nueva...\n" +
-                "Bienvenido, " + campoUsuario.getText());
+        nombreUsuario = campoUsuario.getText();
+
+        textoBienvenida.setText("Creando partida nueva...");
+        textoBienvenida1.setText("Bienvenido, " + nombreUsuario);
         //usuario.setText(campoUsuario.getText());
 
         Mazo pila = new Mazo();

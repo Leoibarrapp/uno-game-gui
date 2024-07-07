@@ -40,7 +40,7 @@
               <Font size="18.0" />
            </font>
         </Label>
-        <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="108.0" prefWidth="400.0">
+        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="108.0" prefWidth="400.0">
             <children>
             <TextField fx:id="campoUsuario" onAction="#getUsuario">
                <VBox.margin>
@@ -60,17 +60,20 @@
                     </Button>
                 </children>
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets bottom="20.0" top="20.0" />
                </VBox.margin>
             </HBox>
+                <Label fx:id="textoBienvenida" textFill="WHITE">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="textoBienvenida1" textFill="WHITE">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+            </Label>
             </children>
         </VBox>
-          <Label fx:id="textoBienvenida" textFill="WHITE">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <padding>
-            <Insets top="20.0" />
-         </padding></Label>
      </children>
 </VBox>
