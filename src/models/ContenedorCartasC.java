@@ -16,20 +16,18 @@ public class ContenedorCartasC extends HBox {
 
     public ContenedorCartasC(){
         for(Carta c : juego.getJugadores().getLast().getCartas().getMazo()){
-            agregarBoton(crearBoton(c));
+            agregarBoton(crearBoton());
         }
     }
 
-    public Button crearBoton(Carta carta) {
+    public Button crearBoton() {
         Button boton = new Button();
 
         Image image = new Image(Objects.requireNonNull(ContenedorCartasC.class.getResourceAsStream("/views/cartas/cartaUno.png")));
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(132);
         imageView.setFitWidth(85);
-
         boton.setGraphic(imageView);
-        boton.setId(carta.getColor() + "-" + carta.getTipo());
 
         return boton;
     }

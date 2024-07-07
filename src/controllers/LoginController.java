@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.Scene;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import models.game.*;
@@ -14,23 +15,41 @@ import models.game.*;
 import java.io.*;
 import java.util.ArrayList;
 
-import static controllers.GameController.usuario;
+import static models.UnoGame.customFont20;
+import static models.UnoGame.customFont80;
+
 
 public class LoginController {
     public static Juego juego;
 
     @FXML
-    private Label texto1;
+    public Label textoTitulo;
     @FXML
-    private Label texto2;
+    public Label textoIntroduceUsuario;
     @FXML
-    private TextField campoUsuario;
+    private Label textoBienvenida;
+
+    @FXML
+    public TextField campoUsuario;
     @FXML
     private Button btnPartidaNueva;
     @FXML
     private Button btnCargarPartida;
 
-    public LoginController() throws IOException {
+    @FXML
+    public void initialize(){
+        textoBienvenida.setFont(customFont20);
+        textoIntroduceUsuario.setFont(customFont20);
+        textoTitulo.setFont(customFont80);
+        campoUsuario.setFont(customFont20);
+
+        btnPartidaNueva.setFont(customFont20);
+        btnPartidaNueva.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        btnPartidaNueva.setPrefHeight(Region.USE_COMPUTED_SIZE);
+
+        btnCargarPartida.setFont(customFont20);
+        btnCargarPartida.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        btnCargarPartida.setPrefHeight(Region.USE_COMPUTED_SIZE);
     }
 
     @FXML
@@ -78,16 +97,15 @@ public class LoginController {
 
     @FXML
     protected void onBtnCargarPartidaClick() {
-        texto1.setText("Cargando partida anterior...");
-        texto2.setText("Bienvenido de nuevo, " + campoUsuario.getText());
-        //usuario.setText(campoUsuario.getText());
 
+        textoBienvenida.setText("Cargando partida anterior..." +
+                "\nBienvenido de nuevo, " + campoUsuario.getText());
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));
-            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(fxmlLoader.load(), 1000, 800);
             Stage stage = new Stage();
             stage.setTitle("PARTIDA");
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.show();
 
         } catch (IOException e) {
@@ -97,12 +115,10 @@ public class LoginController {
 
     @FXML
     protected void onBtnPartidaNuevaClick(){
-        System.out.println();
-
 //        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //
-        texto1.setText("Creando partida nueva...");
-        texto2.setText("Bienvenido, " + campoUsuario.getText());
+        textoBienvenida.setText("Creando partida nueva...\n" +
+                "Bienvenido, " + campoUsuario.getText());
         //usuario.setText(campoUsuario.getText());
 
         Mazo pila = new Mazo();
@@ -127,6 +143,8 @@ public class LoginController {
             Stage stage = new Stage();
             stage.setTitle("PARTIDA");
             stage.setScene(new Scene(root));
+            //stage.setResizable(false);
+            stage.maximizedProperty();
             stage.show();
 
         } catch (IOException e) {

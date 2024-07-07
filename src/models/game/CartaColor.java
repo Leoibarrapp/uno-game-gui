@@ -29,12 +29,12 @@ public class CartaColor extends Carta{
                         return true;
                 }
             default:
-        if( (this.getTipo().equals(tope.getTipo())) || (this.getColor() == juego.getColorActual()) ) {
-            return true;
-        }else
-            return false;
-
-    }}
+                if( (this.getTipo().equals(tope.getTipo())) || (this.getColor() == juego.getColorActual()) ) {
+                    return true;
+                }else
+                    return false;
+        }
+    }
 
     /**
      * Realiza la accion de la carta segun su tipo

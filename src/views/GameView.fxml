@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToolBar?>
@@ -8,37 +9,28 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <?import models.ContenedorCartasJ?>
-
-
-<?import javafx.geometry.Insets?>
 <?import models.ContenedorCartasC?>
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GameController">
+
+<VBox maxHeight="Infinity" maxWidth="Infinity" minHeight="900" minWidth="1400" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #2E69C7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GameController">
    <children>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
-        <items>
-          <Button mnemonicParsing="false" text="Salir" />
-        </items>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: a;">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" top="10.0" />
+         </padding>
       </ToolBar>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="634.0" prefWidth="800.0">
-         <center>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <center>
-                  <Button fx:id="botonCartaActual"  mnemonicParsing="false" onAction="#onBtnJugarCartaClick" BorderPane.alignment="CENTER">
-                     <graphic>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-               </center>
-            </BorderPane>
-         </center>
          <bottom>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
                   <VBox alignment="CENTER">
                      <children>
-                        <Label fx:id="usuario" />
+                        <Label fx:id="textoUsuario" text="USUARIO" textFill="WHITE" />
                         <ContenedorCartasJ fx:id="contenedorJ" spacing="20.0" style="-fx-background-colr: red;">
                            <padding>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -50,9 +42,12 @@
             </HBox>
          </bottom>
          <right>
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0" spacing="2.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="AGARRAR CARTA" />
+                  <Label fx:id="textoAgarrarCarta" alignment="CENTER" prefHeight="35.0" prefWidth="267.0" text="Agarrar Carta" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
                   <Button mnemonicParsing="false" onAction="#onBtnAgarrarCartaClick">
                      <graphic>
                         <ImageView fitHeight="132.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
@@ -63,17 +58,24 @@
                      </graphic>
                   </Button>
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets right="40.0" />
+               </padding>
             </VBox>
          </right>
          <left>
-            <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <VBox prefWidth="300.0" BorderPane.alignment="CENTER" />
          </left>
          <top>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
+                  <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#onBtnSalirClick" prefHeight="42.0" prefWidth="87.0" text="Salir" visible="false" />
                   <VBox alignment="CENTER">
                      <children>
-                        <Label text="CPU" />
+                        <Label fx:id="textoCPU" text="CPU" textFill="WHITE" />
                         <ContenedorCartasC fx:id="contenedorC" spacing="20.0" style="-fx-background-colr: red;">
                            <padding>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -81,9 +83,35 @@
                         </ContenedorCartasC>
                      </children>
                   </VBox>
+                  <Button fx:id="btnSalir1" mnemonicParsing="false" onAction="#onBtnSalirClick" prefHeight="42.0" prefWidth="87.0" text="Salir" visible="false" />
                </children>
             </HBox>
          </top>
+         <center>
+            <BorderPane prefHeight="434.0" prefWidth="688.0" BorderPane.alignment="CENTER">
+               <center>
+                  <Button fx:id="botonCartaActual" mnemonicParsing="false" onAction="#onBtnJugarCartaClick" BorderPane.alignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="116.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+               </center>
+               <bottom>
+                  <Label fx:id="textoEnJuegoAbajo" textFill="WHITE" BorderPane.alignment="CENTER">
+                     <padding>
+                        <Insets bottom="80.0" />
+                     </padding>
+                  </Label>
+               </bottom>
+               <top>
+                  <Label fx:id="textoEnJuegoArriba" textFill="WHITE" BorderPane.alignment="CENTER">
+                     <padding>
+                        <Insets top="80.0" />
+                     </padding>
+                  </Label>
+               </top>
+            </BorderPane>
+         </center>
       </BorderPane>
    </children>
 </VBox>

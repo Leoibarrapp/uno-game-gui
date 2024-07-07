@@ -3,8 +3,6 @@ module com.uno {
     requires javafx.fxml;
     requires com.google.gson;
 
-
-
     opens controllers to javafx.fxml;
     opens models to javafx.fxml;
 
