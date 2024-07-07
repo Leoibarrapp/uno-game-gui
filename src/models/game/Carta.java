@@ -3,7 +3,7 @@ package models.game;
 public abstract class Carta {
     private final char color;
     private final String tipo;
-    private final String urlImagen = "";
+    private final String urlImagen;
 
     /**
      * constructor de la carta, es abstracta, solo sirve para instanciar sus hijos
@@ -13,6 +13,7 @@ public abstract class Carta {
     public Carta(char color, String tipo) {
         this.tipo = tipo;
         this.color = color;
+        this.urlImagen = "/views/cartas/" + color+"-"+tipo + ".png";
     }
 
     public char getColor() {

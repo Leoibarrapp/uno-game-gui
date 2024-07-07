@@ -1,10 +1,10 @@
 package controllers;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import models.ContenedorCartas;
+import javafx.scene.control.Label;
+import models.ContenedorCartasC;
+import models.ContenedorCartasJ;
 import models.GameModel;
 import models.game.Carta;
 
@@ -13,56 +13,44 @@ import static controllers.LoginController.juego;
 public class GameController {
 
     @FXML
-    private ContenedorCartas contenedorJ = new ContenedorCartas();
+    private ContenedorCartasJ contenedorJ = new ContenedorCartasJ();
     @FXML
-    private ContenedorCartas cartasC = new ContenedorCartas();
+    public static ContenedorCartasC contenedorC = new ContenedorCartasC();
     @FXML
-    private static Carta carta;
+    public static Carta cartaActual;
     @FXML
     private static Button boton;
-
-    public void onSalirClick(){
-//        try {
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("VentanaModal.fxml"));
-//            Parent root = fxmlLoader.load();
-//            Stage stage = new Stage();
-//            stage.setTitle("Ventana modal");
-//            stage.initModality(Modality.APPLICATION_MODAL); // Set the modality
-//            stage.setScene(new Scene(root));
-//            stage.showAndWait(); // Show the modal window and wait for it to be closed
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
+    @FXML
+    protected static Label usuario;
+    @FXML
+    protected Button botonCartaActual;
 
     public void onBtnAgarrarCartaClick(){
 
-
         juego.getJugadores().getFirst().agarrarCarta(juego);
-        System.out.println(juego.getJugadores().getFirst() + "ha agarrado carta");
+        System.out.println(juego.getJugadores().getFirst() + "ha agarrado cartaActual");
 
         contenedorJ.agregarBoton(contenedorJ.crearBoton(juego.getJugadores().getFirst().getCartas().getTope()));
 
         GameModel.jugadaCPU(juego.getJugadores().getLast());
-        System.out.println(juego.getMazoJuego().getTope());
-
-        System.out.println(juego.getJugadores().getLast());
     }
 
     public static void onBtnCartaClick(Button b){
         String id = b.getId();
-        carta = juego.getJugadores().getFirst().buscarCarta(id);
+        cartaActual = juego.getJugadores().getFirst().buscarCarta(id);
         boton = b;
     }
 
     public void onBtnJugarCartaClick(){
-        if(carta.esJugable(juego)){
-            juego.getJugadores().getFirst().jugar(juego, carta);
-            contenedorJ.eliminarBoton(boton);
-            System.out.println("eliminado");
-            System.out.println(boton.getId());
+        if(cartaActual.esJugable(juego)){
+            juego.getJugadores().getFirst().jugar(juego, cartaActual);
+            System.out.println(cartaActual);
 
+            contenedorJ.eliminarBoton(boton.getId());
 
+            botonCartaActual.setGraphic(boton.getGraphic());
+
+            GameModel.jugadaCPU(juego.getJugadores().getLast());
         }
 
     }

@@ -14,6 +14,8 @@ import models.game.*;
 import java.io.*;
 import java.util.ArrayList;
 
+import static controllers.GameController.usuario;
+
 public class LoginController {
     public static Juego juego;
 
@@ -78,6 +80,7 @@ public class LoginController {
     protected void onBtnCargarPartidaClick() {
         texto1.setText("Cargando partida anterior...");
         texto2.setText("Bienvenido de nuevo, " + campoUsuario.getText());
+        //usuario.setText(campoUsuario.getText());
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));
@@ -100,6 +103,7 @@ public class LoginController {
 //
         texto1.setText("Creando partida nueva...");
         texto2.setText("Bienvenido, " + campoUsuario.getText());
+        //usuario.setText(campoUsuario.getText());
 
         Mazo pila = new Mazo();
         pila.crear(); pila.barajear();
