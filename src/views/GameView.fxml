@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
@@ -14,6 +15,7 @@
 <?import models.ContenedorCartasJ?>
 <?import models.ContenedorCartasC?>
 
+<?import javafx.scene.Cursor?>
 <VBox maxHeight="Infinity" maxWidth="Infinity" minHeight="900" minWidth="1400" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #2E69C7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GameController">
    <children>
       <ToolBar prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: a;">
@@ -43,21 +45,6 @@
          </bottom>
          <right>
             <VBox alignment="CENTER" prefWidth="300.0" spacing="10.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label fx:id="textoAgarrarCarta" alignment="CENTER" prefHeight="35.0" prefWidth="267.0" text="Agarrar Carta" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font></Label>
-                  <Button mnemonicParsing="false" onAction="#onBtnAgarrarCartaClick">
-                     <graphic>
-                        <ImageView fitHeight="132.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@recursos/cartaUno.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -110,6 +97,37 @@
                      </padding>
                   </Label>
                </top>
+               <right>
+                  <VBox alignment="CENTER" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="textoAgarrarCarta" alignment="CENTER" prefHeight="35.0" prefWidth="175.0" text="Agarrar" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="botonAgarrarCarta" mnemonicParsing="false" onAction="#onBtnAgarrarCartaClick">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="132.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@recursos/cartaUno.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </right>
+               <left>
+                  <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ChoiceBox fx:id="boxEscogerColor" disable="true" prefHeight="50.0" prefWidth="55.0" />
+                        <Button fx:id="btnColorEscogido" disable="true" mnemonicParsing="false" onAction="#onBtnColorEscogidoClick" prefHeight="25.0" prefWidth="55.0" />
+                     </children>
+                  </VBox>
+               </left>
             </BorderPane>
          </center>
       </BorderPane>

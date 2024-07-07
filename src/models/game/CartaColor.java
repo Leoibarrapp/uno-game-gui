@@ -47,32 +47,34 @@ public class CartaColor extends Carta{
 
         switch(this.getTipo()){
             case "R","S":
-                System.out.println("\tRepite el turno");
                 break;
             case "T2":
-                juego.cambiarTurno();
-                int cant = 2;
 
-                Carta carta = jugador.buscarCartaSegunTipo("T2");
 
-                while(carta != null){
-                    System.out.println( "\t" + TextColor.YELLOW + jugador.getNombre() + TextColor.RESET + " ha respondido con otra carta " + TextColor.GREEN + "T2!" + TextColor.RESET );
 
-                    cant = cant + 2;
-                    juego.cambiarTurno();
-                    jugador.getCartas().eliminarCarta(carta);
-                    juego.getMazoJuego().agregarCarta(carta);
-
-                    jugador = juego.getJugadores().get(juego.getTurno());
-                    carta = jugador.buscarCartaSegunTipo("T2");
-                }
-
-                for(int i = 0; i < cant; i++){
-                    jugador.agarrarCarta(juego);
-                }
-
-                System.out.println();
-                System.out.println("\t"+ TextColor.YELLOW + jugador.getNombre() + TextColor.RESET +" robó " + TextColor.YELLOW + cant + " cartas" + TextColor.RESET + " de la pila" + TextColor.RESET);
+//                juego.cambiarTurno();
+//                int cant = 2;
+//
+//                Carta carta = jugador.buscarCartaSegunTipo("T2");
+//
+//                while(carta != null){
+//                    System.out.println( "\t" + TextColor.YELLOW + jugador.getNombre() + TextColor.RESET + " ha respondido con otra carta " + TextColor.GREEN + "T2!" + TextColor.RESET );
+//
+//                    cant = cant + 2;
+//                    juego.cambiarTurno();
+//                    jugador.getCartas().eliminarCarta(carta);
+//                    juego.getMazoJuego().agregarCarta(carta);
+//
+//                    jugador = juego.getJugadores().get(juego.getTurno());
+//                    carta = jugador.buscarCartaSegunTipo("T2");
+//                }
+//
+//                for(int i = 0; i < cant; i++){
+//                    jugador.agarrarCarta(juego);
+//                }
+//
+//                System.out.println();
+//                System.out.println("\t"+ TextColor.YELLOW + jugador.getNombre() + TextColor.RESET +" robó " + TextColor.YELLOW + cant + " cartas" + TextColor.RESET + " de la pila" + TextColor.RESET);
             default:
                 juego.cambiarTurno();
         }

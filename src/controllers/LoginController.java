@@ -7,9 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+import models.UnoGame;
 import models.game.*;
 
 import java.io.*;
@@ -104,6 +106,10 @@ public class LoginController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1000, 800);
             Stage stage = new Stage();
+
+//            Image icon = new Image(GameController.class.getResourceAsStream("/views/recursos/cartaUno.png"));
+//            stage.getIcons().add(icon);
+
             stage.setTitle("PARTIDA");
             stage.setScene(scene);
             stage.show();
@@ -131,11 +137,6 @@ public class LoginController {
 
         juego = new Juego(descarte, pila, jugadores);
         juego.iniciarJuego();
-
-        System.out.println(juego.getMazoJuego().getTope());
-
-        System.out.println(juego.getJugadores().getLast());
-        System.out.println(juego.getJugadores().getFirst());
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));

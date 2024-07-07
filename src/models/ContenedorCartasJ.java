@@ -1,5 +1,6 @@
 package models;
 
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,6 +32,7 @@ public class ContenedorCartasJ extends HBox {
         boton.setGraphic(imageView);
         boton.setId(carta.getColor() + "-" + carta.getTipo());
         boton.setOnAction(event -> onBtnCartaClick(boton));
+        //boton.setCursor(Cursor.HAND);
 
         return boton;
     }
