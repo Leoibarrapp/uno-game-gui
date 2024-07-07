@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import models.ContenedorCartasC;
 import models.ContenedorCartasJ;
+import models.UnoGame;
 import models.game.*;
 
 import java.time.Duration;
@@ -65,7 +66,6 @@ public class GameController {
 
         boxEscogerColor.setItems(FXCollections.observableArrayList("R", "B", "G", "Y"));
         boxEscogerColor.setStyle("-fx-font: 20px \""+fontURL+"\";");
-        //boxEscogerColor.setOnAction(e -> escogerColor());
 
         btnColorEscogido.setFont(customFont20);
 
@@ -261,8 +261,8 @@ public class GameController {
 
     }
 
-    public void onBtnSalirClick() {
-        notifyAll();
+    public void onBtnSalirClick() throws InterruptedException {
+        btnSalir.getScene().getWindow().hide();
     }
 
     public void onBtnColorEscogidoClick() {

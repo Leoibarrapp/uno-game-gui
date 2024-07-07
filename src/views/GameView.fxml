@@ -13,8 +13,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<!--<?import models.ContenedorCartasJ?>-->
-<!--<?import models.ContenedorCartasC?>-->
+<?import models.ContenedorCartasJ?>
+<?import models.ContenedorCartasC?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="900" minWidth="1400" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #2E69C7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GameController">
    <children>
@@ -23,8 +23,15 @@
             <Insets />
          </VBox.margin>
          <padding>
-            <Insets bottom="10.0" left="10.0" top="10.0" />
+            <Insets left="10.0" top="10.0" />
          </padding>
+         <items>
+            <ToolBar style="-fx-background-color: a;">
+               <items>
+                  <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#onBtnSalirClick" prefHeight="42.0" prefWidth="87.0" text="Salir" />
+               </items>
+            </ToolBar>
+         </items>
       </ToolBar>
       <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="634.0" prefWidth="800.0">
          <bottom>
@@ -33,11 +40,11 @@
                   <VBox alignment="CENTER">
                      <children>
                         <Label fx:id="textoUsuario" text="USUARIO" textFill="WHITE" />
-<!--                        <ContenedorCartasJ fx:id="contenedorJ" spacing="20.0" style="-fx-background-colr: red;">-->
-<!--                           <padding>-->
-<!--                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />-->
-<!--                           </padding>-->
-<!--                        </ContenedorCartasJ>-->
+                        <ContenedorCartasJ fx:id="contenedorJ" spacing="20.0" style="-fx-background-colr: red;">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="0" />
+                           </padding>
+                        </ContenedorCartasJ>
                      </children>
                   </VBox>
                </children>
@@ -57,20 +64,18 @@
             <VBox prefWidth="300.0" BorderPane.alignment="CENTER" />
          </left>
          <top>
-            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="1400.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="1400.0" spacing="100" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#onBtnSalirClick" prefHeight="42.0" prefWidth="87.0" text="Salir" visible="false" />
                   <VBox alignment="CENTER">
                      <children>
                         <Label fx:id="textoCPU" text="CPU" textFill="WHITE" />
-<!--                        <ContenedorCartasC fx:id="contenedorC" spacing="20.0" style="-fx-background-colr: red;">-->
-<!--                           <padding>-->
-<!--                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />-->
-<!--                           </padding>-->
-<!--                        </ContenedorCartasC>-->
+                        <ContenedorCartasC fx:id="contenedorC" spacing="20.0" style="-fx-background-colr: red;">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="0" />
+                           </padding>
+                        </ContenedorCartasC>
                      </children>
                   </VBox>
-                  <Button fx:id="btnSalir1" mnemonicParsing="false" onAction="#onBtnSalirClick" prefHeight="42.0" prefWidth="87.0" text="Salir" visible="false" />
                </children>
             </HBox>
          </top>

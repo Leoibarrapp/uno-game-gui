@@ -28,7 +28,7 @@ public class UnoGame extends Application {
 
             Image icon = new Image(UnoGame.class.getResourceAsStream("/views/recursos/cartaUno.png"));
 
-            stage.setTitle("uno-game-gui");
+            stage.setTitle("uno-game-login");
             stage.getIcons().add(icon);
             stage.setScene(scene);
             stage.show();

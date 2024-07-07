@@ -1,5 +1,8 @@
 package controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -59,7 +62,7 @@ public class LoginController {
 
     @FXML
     protected void getUsuario() throws IOException {
-
+//
 //        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //        boolean usuarioExiste = false;
 //
@@ -106,21 +109,7 @@ public class LoginController {
         textoBienvenida.setText("Cargando partida anterior...");
         textoBienvenida1.setText("Bienvenido de nuevo, " + nombreUsuario);
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 800);
-            Stage stage = new Stage();
-
-//            Image icon = new Image(GameController.class.getResourceAsStream("/views/recursos/cartaUno.png"));
-//            stage.getIcons().add(icon);
-
-            stage.setTitle("PARTIDA");
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        mostrarVentanaJuego();
     }
 
     @FXML
@@ -144,14 +133,21 @@ public class LoginController {
         juego = new Juego(descarte, pila, jugadores);
         juego.iniciarJuego();
 
+        mostrarVentanaJuego();
+    }
+
+    private void mostrarVentanaJuego(){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));
-            Parent root = fxmlLoader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));
+            Parent root = loader.load();
             Stage stage = new Stage();
-            stage.setTitle("PARTIDA");
+
+            Image icon = new Image(UnoGame.class.getResourceAsStream("/views/recursos/cartaUno.png"));
+
+            stage.setTitle("uno-game");
+            stage.getIcons().add(icon);
             stage.setScene(new Scene(root));
-            //stage.setResizable(false);
-            stage.maximizedProperty();
+
             stage.show();
 
         } catch (IOException e) {
