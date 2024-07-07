@@ -52,7 +52,7 @@
                      <graphic>
                         <ImageView fitHeight="132.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@cartas/cartaUno.png" />
+                              <Image url="@recursos/cartaUno.png" />
                            </image>
                         </ImageView>
                      </graphic>

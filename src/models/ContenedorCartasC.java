@@ -5,11 +5,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import models.game.Carta;
-import models.game.Jugador;
 
 import java.util.Objects;
 
-import static controllers.GameController.onBtnCartaClick;
 import static controllers.LoginController.juego;
 
 public class ContenedorCartasC extends HBox {
@@ -23,7 +21,7 @@ public class ContenedorCartasC extends HBox {
     public Button crearBoton() {
         Button boton = new Button();
 
-        Image image = new Image(Objects.requireNonNull(ContenedorCartasC.class.getResourceAsStream("/views/cartas/cartaUno.png")));
+        Image image = new Image(Objects.requireNonNull(ContenedorCartasC.class.getResourceAsStream("/views/recursos/cartaUno.png")));
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(132);
         imageView.setFitWidth(85);

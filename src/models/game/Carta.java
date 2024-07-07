@@ -13,7 +13,7 @@ public abstract class Carta {
     public Carta(char color, String tipo) {
         this.tipo = tipo;
         this.color = color;
-        this.urlImagen = "/views/cartas/" + color+"-"+tipo + ".png";
+        this.urlImagen = "/views/recursos/" + color+"-"+tipo + ".png";
     }
 
     public char getColor() {
