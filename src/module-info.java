@@ -6,6 +6,7 @@ module com.uno {
 
     opens controllers to javafx.fxml;
     opens models to javafx.fxml;
+    opens models.game to com.google.gson;
 
     exports models;
 }

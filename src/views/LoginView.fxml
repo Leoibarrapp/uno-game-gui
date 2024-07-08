@@ -42,7 +42,7 @@
         </Label>
         <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="108.0" prefWidth="400.0">
             <children>
-            <TextField fx:id="campoUsuario" onAction="#getUsuario">
+            <TextField fx:id="campoUsuario">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin></TextField>

@@ -60,47 +60,7 @@ public class LoginController {
         btnCargarPartida.setPrefHeight(Region.USE_COMPUTED_SIZE);
     }
 
-    @FXML
-    protected void getUsuario() throws IOException {
-//
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//        boolean usuarioExiste = false;
-//
-//        //FileReader reader = new FileReader("usuarios.json");
-//        LinkedList<String> u = null;
-//        //u = gson.fromJson(reader, List.class);
-//        //System.out.println(u);
-//        //reader.close();
-//
-//        try(FileWriter writer = new FileWriter("usuarios.json")){
-//            //u.add(usuario);
-//            //System.out.println(u);
-//            gson.toJson(u, writer);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
 
-//        try (FileReader reader = new FileReader("usuarios.json")) {
-//            List<String> usuarios = gson.fromJson(reader, List.class);
-//
-//            if (usuarios != null) {
-//                for(String u : usuarios) {
-//                    if (usuario.equals(u)) {
-//                        usuarioExiste = true;
-//                    }
-//                }
-//            }
-//        } catch (FileNotFoundException e) {
-//            // File not found, will create a new one
-//        }
-//
-//        if(usuarioExiste == true){
-//            texto2.setText("CONOCIDO");
-//        }
-//        else{
-//            texto2.setText("NO CONOCIDO");
-//        }
-    }
 
     @FXML
     protected void onBtnCargarPartidaClick() {
@@ -147,6 +107,7 @@ public class LoginController {
             stage.setTitle("uno-game");
             stage.getIcons().add(icon);
             stage.setScene(new Scene(root));
+            stage.setFullScreen(true);
 
             stage.show();
 
