@@ -26,7 +26,7 @@ public class UnoGame extends Application {
             FXMLLoader fxmlLoader = new FXMLLoader(UnoGame.class.getResource("/views/LoginView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 600);
 
-            Image icon = new Image(UnoGame.class.getResourceAsStream("/views/recursos/cartaUno.png"));
+            Image icon = new Image(UnoGame.class.getResourceAsStream("/views/recursos/icon/icon.png"));
 
             stage.setTitle("uno-game-login");
             stage.getIcons().add(icon);

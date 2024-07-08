@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800" style="-fx-background-color: #2E69C7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800" style="-fx-background-color: #2E69C7;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
      <children>
         <Label fx:id="textoTitulo" alignment="CENTER" text="UNO" textFill="WHITE">
            <font>
@@ -48,7 +44,7 @@
                </VBox.margin></TextField>
             <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="368.0" spacing="20.0">
                 <children>
-                    <Button fx:id="btnPartidaNueva" mnemonicParsing="false" onAction="#onBtnPartidaNuevaClick" prefHeight="180.0" prefWidth="130.0" text="Partida Nueva">
+                    <Button fx:id="btnPartidaNueva" mnemonicParsing="false" onAction="#onBtnPartidaNuevaClick" prefHeight="51.0" prefWidth="130.0" text="Partida Nueva">
                         <cursor>
                         <Cursor fx:constant="HAND" />
                         </cursor>
@@ -63,6 +59,10 @@
                   <Insets bottom="20.0" top="20.0" />
                </VBox.margin>
             </HBox>
+            <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="130.0" text="Salir">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
                 <Label fx:id="textoBienvenida" textFill="WHITE">
                <VBox.margin>
                   <Insets />
