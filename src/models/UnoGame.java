@@ -9,19 +9,17 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class UnoGame extends Application {
 
-    public static final String fontURL = "/views/MinecraftRegular-Bmg3.otf";
-    public static final Font customFont20 = Font.loadFont(UnoGame.class.getResourceAsStream("/views/MinecraftRegular-Bmg3.otf"), 20);
-    public static final Font customFont30 = Font.loadFont(UnoGame.class.getResourceAsStream("/views/MinecraftRegular-Bmg3.otf"), 30);
-    public static final Font customFont40 = Font.loadFont(UnoGame.class.getResourceAsStream("/views/MinecraftRegular-Bmg3.otf"), 40);
-    public static final Font customFont80 = Font.loadFont(UnoGame.class.getResourceAsStream("/views/MinecraftRegular-Bmg3.otf"), 80);
+    public static final String fontURL = "/views/recursos/MinecraftRegular-Bmg3.otf";
+    public static final Font customFont20 = Font.loadFont(UnoGame.class.getResourceAsStream("/views/recursos/MinecraftRegular-Bmg3.otf"), 20);
+    public static final Font customFont30 = Font.loadFont(UnoGame.class.getResourceAsStream("/views/recursos/MinecraftRegular-Bmg3.otf"), 30);
+    public static final Font customFont40 = Font.loadFont(UnoGame.class.getResourceAsStream("/views/recursos/MinecraftRegular-Bmg3.otf"), 40);
+    public static final Font customFont80 = Font.loadFont(UnoGame.class.getResourceAsStream("/views/recursos/MinecraftRegular-Bmg3.otf"), 80);
 
 
     @Override
