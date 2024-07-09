@@ -26,8 +26,8 @@ public class ContenedorCartasJ extends HBox {
 
         Image image = new Image(Objects.requireNonNull(ContenedorCartasJ.class.getResourceAsStream(carta.getUrlImagen())));
         ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(132);
-        imageView.setFitWidth(85);
+        imageView.setFitHeight(135);
+        imageView.setFitWidth(87);
 
         boton.setGraphic(imageView);
         boton.setId(carta.getColor() + "-" + carta.getTipo());

@@ -23,8 +23,9 @@ public class ContenedorCartasC extends HBox {
 
         Image image = new Image(Objects.requireNonNull(ContenedorCartasC.class.getResourceAsStream("/views/recursos/cartaUno.png")));
         ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(132);
-        imageView.setFitWidth(85);
+        imageView.setFitHeight(135);
+        imageView.setFitWidth(87);
+
         boton.setGraphic(imageView);
 
         return boton;

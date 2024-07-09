@@ -6,13 +6,16 @@ import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import models.ContenedorCartasC;
 import models.ContenedorCartasJ;
@@ -34,39 +37,32 @@ public class GameController {
     private String nombreUsuario;
 
     @FXML
-    public Label textoEnJuegoAbajo;
+    private Label textoEnJuegoAbajo;
     @FXML
-    public Label textoEnJuegoArriba;
+    private Label textoEnJuegoArriba;
     @FXML
-    public Label textoUsuario;
+    private Label textoUsuario;
     @FXML
-    public Label textoCPU;
+    private Label textoCPU;
     @FXML
-    public Label textoAgarrarCarta;
+    private Label textoAgarrarCarta;
     @FXML
-    public Button btnSalir;
+    private Button btnSalir;
     @FXML
-    public ChoiceBox<String> boxEscogerColor;
-    public Button btnColorEscogido;
-    @FXML
-    public Button botonAgarrarCarta;
-    @FXML
-    public Label textoEscogerCarta;
+    private Button botonAgarrarCarta;
     @FXML
     private ContenedorCartasJ contenedorJ = new ContenedorCartasJ();
     @FXML
-    public ContenedorCartasC contenedorC = new ContenedorCartasC();
+    private ContenedorCartasC contenedorC = new ContenedorCartasC();
     @FXML
-    public static Carta cartaActual;
+    private static Carta cartaActual;
     @FXML
     private static Button botonCartaEscogida;
     @FXML
-    protected Button botonCartaActual;
+    private Button botonCartaActual;
 
     private Jugador jugador = juego.getJugadores().getFirst();
     private Jugador cpu = juego.getJugadores().getLast();
-
-    private PauseTransition pause = new PauseTransition(Duration.seconds(1));
 
     @FXML
     public void initialize(){
@@ -74,11 +70,6 @@ public class GameController {
 
         cartaActual = juego.getMazoJuego().getTope();
         this.setImage(botonCartaActual);
-
-        boxEscogerColor.setItems(FXCollections.observableArrayList("R", "B", "G", "Y"));
-        boxEscogerColor.setStyle("-fx-font: 20px \""+fontURL+"\";");
-
-        btnColorEscogido.setFont(customFont20);
 
         textoEnJuegoAbajo.setFont(customFont30);
         textoEnJuegoArriba.setFont(customFont30);
@@ -89,7 +80,6 @@ public class GameController {
         textoCPU.setFont(customFont40);
 
         textoAgarrarCarta.setFont(customFont20);
-        textoEscogerCarta.setFont(customFont20);
 
         btnSalir.setFont(customFont20);
 
@@ -113,7 +103,7 @@ public class GameController {
 
         guardarPartida();
 
-        guardarUsuario(jugador);
+        //guardarUsuario(jugador);
     }
 
     public static void onBtnCartaClick(Button b){
@@ -134,8 +124,7 @@ public class GameController {
             botonCartaActual.setGraphic(botonCartaEscogida.getGraphic());
 
             if(cartaActual.getTipo().equals("T4")){
-                boxEscogerColor.setDisable(false);
-                btnColorEscogido.setDisable(false);
+
 
                 cpu.agarrarCarta(juego);
                 contenedorC.agregarBoton(contenedorC.crearBoton());
@@ -148,6 +137,9 @@ public class GameController {
 
                 cpu.agarrarCarta(juego);
                 contenedorC.agregarBoton(contenedorC.crearBoton());
+
+                ventanaModalEscogerColor();
+                textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
             }
             else{
                 if(cartaActual.getTipo().equals("T2")) {
@@ -163,8 +155,9 @@ public class GameController {
                     }
                     else{
                         if(cartaActual.getTipo().equals("CC")){
-                            boxEscogerColor.setDisable(false);
-                            btnColorEscogido.setDisable(false);
+                            ventanaModalEscogerColor();
+                            textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
+                            delay(event -> { jugadaCPU(); }, 1);
                         }
                         else{
                             if(jugador.getCartas().getMazo().size() == 1){
@@ -175,11 +168,9 @@ public class GameController {
                             else {
                                 if (jugador.getCartas().getMazo().isEmpty()) {
 
-                                    btnColorEscogido.setDisable(true);
                                     contenedorC.setDisable(true);
                                     contenedorJ.setDisable(true);
                                     botonAgarrarCarta.setDisable(true);
-                                    boxEscogerColor.setDisable(true);
                                     textoAgarrarCarta.setDisable(true);
                                     textoEnJuegoArriba.setText("¡" + nombreUsuario + " ha ganado!");
                                     textoEnJuegoArriba.setFont(customFont80);
@@ -333,20 +324,23 @@ public class GameController {
 
     }
 
-    public void onBtnColorEscogidoClick() throws IOException {
-        if(boxEscogerColor.getValue() != null){
-            boxEscogerColor.setDisable(true);
-            btnColorEscogido.setDisable(true);
-            juego.setColorActual(boxEscogerColor.getValue().charAt(0));
-            textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
+//    public void onBtnColorEscogidoClick() throws IOException {
+//        ventanaModalEscogerColor();
+//
+////        if(boxEscogerColor.getValue() != null){
+////            boxEscogerColor.setDisable(true);
+////            btnColorEscogido.setDisable(true);
+////            juego.setColorActual(boxEscogerColor.getValue().charAt(0));
+////            textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
+////
+////            if(cartaActual.getTipo().equals("CC")){
+////                jugadaCPU();
+////            }
+////
+////        }
+//
+//    }
 
-            if(cartaActual.getTipo().equals("CC")){
-                jugadaCPU();
-            }
-
-        }
-
-    }
     private int obtenerPuntos(Jugador j){
         Mazo cartas = j.getCartas();
 
@@ -368,6 +362,23 @@ public class GameController {
         return puntos;
     }
 
+    public void ventanaModalEscogerColor(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/ChooseColorView.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("uno-game-choose-color");
+            stage.initModality(Modality.APPLICATION_MODAL); // Set the modality
+            stage.setScene(new Scene(root));
+
+            stage.initStyle(StageStyle.UNDECORATED);
+
+            stage.showAndWait(); // Show the modal window and wait for it to be closed
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void guardarPartida(){
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -386,24 +397,24 @@ public class GameController {
         ArrayList<Jugador> usuarios = new ArrayList<>();
 
         try(FileReader reader = new FileReader("usuarios.json")){
-            usuarios = gson.fromJson(reader, ArrayList.class);
+            usuarios = gson.fromJson(reader, ArrayList.class);                  //  carga la lista de usuarios
         }
         catch (FileNotFoundException e){
 
         }
 
-        if(usuarios != null){
+        if(usuarios != null){               //si es null el archivo está vacío
             for(Jugador aux : usuarios){
                 if(Objects.equals(j.getNombre(), aux.getNombre())){
-                    usuarios.remove(aux);
+                    usuarios.remove(aux);           //si consigue uno con el mismo nombre lo elimina
                 }
             }
         }
 
-        usuarios.add(j);
+        usuarios.add(j);        //añade el jugador con los puntos a la lista
 
         try(FileWriter writer = new FileWriter("usuarios.json")){
-            gson.toJson(usuarios, writer);
+            gson.toJson(usuarios, writer);      //carga otra vez la lista en el archivo
         }
     }
 
