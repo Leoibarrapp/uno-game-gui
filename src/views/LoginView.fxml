@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -15,17 +14,18 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #2E69C7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
      <children>
-      <ToolBar prefHeight="63.0" prefWidth="800.0" style="-fx-background-color: a;">
-        <items>
-          <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#onBtnSalirClick" text="Salir" />
-        </items>
-         <opaqueInsets>
+      <HBox alignment="CENTER" prefHeight="66.0" prefWidth="800.0" spacing="520.0">
+         <children>
+            <Button fx:id="btnEstadisticas" mnemonicParsing="false" onAction="#onBtnEstadisticasClick" prefHeight="33.0" prefWidth="93.0" text="Estadísticas" />
+          <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#onBtnSalirClick" prefHeight="33.0" prefWidth="66.0" text="Salir" />
+         </children>
+         <VBox.margin>
             <Insets />
-         </opaqueInsets>
+         </VBox.margin>
          <padding>
-            <Insets left="30.0" top="20.0" />
+            <Insets top="20.0" />
          </padding>
-      </ToolBar>
+      </HBox>
         <Label fx:id="textoTitulo" alignment="CENTER" text="UNO" textFill="WHITE">
            <font>
               <Font name="System Bold" size="48.0" />

@@ -3,6 +3,7 @@ package controllers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +22,6 @@ import javafx.stage.Stage;
 import models.UnoGame;
 import models.game.*;
 
-import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -32,23 +32,25 @@ public class LoginController {
     public static Juego juego;
 
     @FXML
-    public Label textoTitulo;
+    private Label textoTitulo;
     @FXML
-    public Label textoIntroduceUsuario;
+    private Label textoIntroduceUsuario;
     @FXML
-    public Label textoBienvenida1;
+    private Label textoBienvenida1;
     @FXML
-    public ProgressBar barraProgreso;
+    private ProgressBar barraProgreso;
+    @FXML
+    private Button btnEstadisticas;
     @FXML
     private Label textoBienvenida;
     @FXML
-    public  TextField campoUsuario;
+    private  TextField campoUsuario;
     @FXML
     private Button btnPartidaNueva;
     @FXML
     private Button btnCargarPartida;
     @FXML
-    public Button btnSalir;
+    private Button btnSalir;
 
     @FXML
     public void initialize(){
@@ -69,6 +71,10 @@ public class LoginController {
         btnSalir.setFont(customFont20);
         btnSalir.setPrefWidth(Region.USE_COMPUTED_SIZE);
         btnSalir.setPrefHeight(Region.USE_COMPUTED_SIZE);
+
+        btnEstadisticas.setFont(customFont20);
+        btnEstadisticas.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        btnEstadisticas.setPrefHeight(Region.USE_COMPUTED_SIZE);
     }
 
 
@@ -133,7 +139,7 @@ public class LoginController {
             stage.setTitle("uno-game");
             stage.getIcons().add(icon);
             stage.setScene(new Scene(root));
-            stage.setFullScreen(true);
+            //stage.setFullScreen(true);
 
             ((Stage) btnPartidaNueva.getScene().getWindow()).close();
 
@@ -176,5 +182,9 @@ public class LoginController {
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void onBtnEstadisticasClick() {
+
     }
 }
