@@ -24,6 +24,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Objects;
 
 import static controllers.LoginController.juego;
@@ -65,13 +66,16 @@ public class GameController {
 
     private Jugador jugador = juego.getJugadores().getFirst();
     private Jugador cpu = juego.getJugadores().getLast();
+    public Scoreboard puntaje = new Scoreboard();
 
     private PauseTransition pause = new PauseTransition(Duration.seconds(1));
 
     @FXML
     public void initialize(){
+        if (puntaje == null){
+        puntaje.crear();}
         nombreUsuario = jugador.getNombre();
-
+        puntaje.agregarJugador(jugador);
         cartaActual = juego.getMazoJuego().getTope();
         this.setImage(botonCartaActual);
 
@@ -189,10 +193,10 @@ public class GameController {
                                     textoEnJuegoAbajo.setText(puntos + " puntos");
                                     textoEnJuegoAbajo.setFont(customFont80);
 
-                                    puntos += jugador.getPuntos();
+                                    puntos += jugador.getPuntaje();
 
                                     juego.setGanador(jugador);
-                                    jugador.setPuntos(puntos);
+                                    jugador.setPuntaje(puntos);
 
                                     //guardarUsuario(jugador);
                                     return;
@@ -277,10 +281,10 @@ public class GameController {
                                 textoEnJuegoAbajo.setText(puntos + " puntos");
                                 textoEnJuegoAbajo.setFont(customFont80);
 
-                                puntos += cpu.getPuntos();
+                                puntos += cpu.getPuntaje();
 
                                 juego.setGanador(cpu);
-                                cpu.setPuntos(puntos);
+                                cpu.setPuntaje(puntos);
 
                                 //guardarUsuario(cpu);
                                 return;
@@ -380,32 +384,10 @@ public class GameController {
     }
 
     private void guardarUsuario(Jugador j) throws IOException {
-
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        FileWriter writer = new FileWriter("puntajes.json");
+        gson.toJson(puntaje, writer);
+        writer.close();
 
-        ArrayList<Jugador> usuarios = new ArrayList<>();
-
-        try(FileReader reader = new FileReader("usuarios.json")){
-            usuarios = gson.fromJson(reader, ArrayList.class);
-        }
-        catch (FileNotFoundException e){
-
-        }
-
-        if(usuarios != null){
-            for(Jugador aux : usuarios){
-                if(Objects.equals(j.getNombre(), aux.getNombre())){
-                    usuarios.remove(aux);
-                }
-            }
-        }
-
-        usuarios.add(j);
-
-        try(FileWriter writer = new FileWriter("usuarios.json")){
-            gson.toJson(usuarios, writer);
-        }
     }
-
-
 }

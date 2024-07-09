@@ -93,6 +93,7 @@ public class LoginController {
         }
     }
 
+
     @FXML
     protected void onBtnPartidaNuevaClick() throws InterruptedException {
 //        Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -146,11 +147,11 @@ public class LoginController {
     private void mostrarBarraDeCarga(){
         barraProgreso.setVisible(true);
 
-        delay(event -> barraProgreso.setProgress(0.2), 2);
-        delay(event -> barraProgreso.setProgress(0.4), 2.5);
-        delay(event -> barraProgreso.setProgress(0.6), 3);
-        delay(event -> barraProgreso.setProgress(0.8), 3.5);
-        delay(event -> barraProgreso.setProgress(1.0), 4);
+        delay(event -> barraProgreso.setProgress(0.2), 1);
+        delay(event -> barraProgreso.setProgress(0.4), 1.5);
+        delay(event -> barraProgreso.setProgress(0.6), 2);
+        delay(event -> barraProgreso.setProgress(0.8), 2.5);
+        delay(event -> barraProgreso.setProgress(1.0), 3);
     }
 
     public void onBtnSalirClick(){
