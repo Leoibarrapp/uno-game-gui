@@ -1,0 +1,45 @@
+[
+  {
+    "nombre": "Jesus",
+    "cartas": {
+      "mazo": [
+        {
+          "color": "R",
+          "tipo": "3",
+          "urlImagen": "/views/recursos/R-3.png"
+        },
+        {
+          "color": "Y",
+          "tipo": "6",
+          "urlImagen": "/views/recursos/Y-6.png"
+        },
+        {
+          "color": "G",
+          "tipo": "S",
+          "urlImagen": "/views/recursos/G-S.png"
+        },
+        {
+          "color": "G",
+          "tipo": "5",
+          "urlImagen": "/views/recursos/G-5.png"
+        },
+        {
+          "color": "Y",
+          "tipo": "5",
+          "urlImagen": "/views/recursos/Y-5.png"
+        },
+        {
+          "color": "Y",
+          "tipo": "9",
+          "urlImagen": "/views/recursos/Y-9.png"
+        },
+        {
+          "color": "B",
+          "tipo": "7",
+          "urlImagen": "/views/recursos/B-7.png"
+        }
+      ]
+    },
+    "puntaje": 0
+  }
+]

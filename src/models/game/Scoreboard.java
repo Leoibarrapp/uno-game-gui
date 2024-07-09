@@ -23,7 +23,7 @@ public class Scoreboard {
     public void ordenar() {
         this.jugadores.sort(new Comparator<Jugador>() {
             public int compare(Jugador jugador1, Jugador jugador2) {
-                return Integer.compare(jugador2.getPuntaje(), jugador1.getPuntaje());
+                return Integer.compare(jugador2.getPuntos(), jugador1.getPuntos());
             }
         });
     }
@@ -39,14 +39,14 @@ public class Scoreboard {
     public void reemplazar(Jugador jugador1) {
         for (Jugador jugador : jugadores) {
             if (Objects.equals(jugador.getNombre(), jugador1.getNombre())) {
-                jugador.setPuntaje(jugador1.getPuntaje());
+                jugador.setPuntos(jugador1.getPuntos());
             }
         }
     }
 
     public void imprimir() {
         for (Jugador jugador : jugadores) {
-            System.out.println("Jugador " + jugador.getNombre() + ", puntaje " + jugador.getPuntaje());
+            System.out.println("Jugador " + jugador.getNombre() + ", puntaje " + jugador.getPuntos());
         }
     }
 }

@@ -2,6 +2,7 @@ package controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,8 +24,12 @@ import models.UnoGame;
 import models.game.*;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Objects;
 
+import static controllers.GameController.guardarUsuario;
 import static models.UnoGame.*;
 
 
@@ -90,7 +95,14 @@ public class LoginController {
             textoBienvenida1.setText("Bienvenido de nuevo, " + juego.getJugadores().getFirst().getNombre());
 
             delay(event -> { mostrarBarraDeCarga(); }, 1);
-            delay(event -> { mostrarVentanaJuego(); }, 6);
+
+            delay(event -> {
+                try {
+                    mostrarVentanaJuego();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }, 6);
         }
         else{
             textoBienvenida1.setTextFill(Color.YELLOW);
@@ -98,7 +110,6 @@ public class LoginController {
             juego = null;
         }
     }
-
 
     @FXML
     protected void onBtnPartidaNuevaClick() throws InterruptedException {
@@ -123,11 +134,24 @@ public class LoginController {
         juego.iniciarJuego();
 
         delay(event -> { mostrarBarraDeCarga(); }, 1);
-        delay(event -> { mostrarVentanaJuego(); }, 6);
+
+        delay(event -> {
+            try {
+                mostrarVentanaJuego();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }, 6);
 
     }
 
-    private void mostrarVentanaJuego(){
+    private void mostrarVentanaJuego() throws IOException {
+
+        cargarUsuarios();
+        guardarUsuario(juego.getJugadores().getFirst());
+
+        System.out.println(juego.getJugadores().getFirst().getPuntos());
+        System.out.println(juego.getJugadores().getLast().getPuntos());
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));
@@ -153,11 +177,11 @@ public class LoginController {
     private void mostrarBarraDeCarga(){
         barraProgreso.setVisible(true);
 
-        delay(event -> barraProgreso.setProgress(0.2), 1);
-        delay(event -> barraProgreso.setProgress(0.4), 1.5);
-        delay(event -> barraProgreso.setProgress(0.6), 2);
-        delay(event -> barraProgreso.setProgress(0.8), 2.5);
-        delay(event -> barraProgreso.setProgress(1.0), 3);
+        delay(event -> barraProgreso.setProgress(0.2), 2);
+        delay(event -> barraProgreso.setProgress(0.4), 2.5);
+        delay(event -> barraProgreso.setProgress(0.6), 3);
+        delay(event -> barraProgreso.setProgress(0.8), 3.5);
+        delay(event -> barraProgreso.setProgress(1.0), 4);
     }
 
     public void onBtnSalirClick(){
@@ -181,6 +205,39 @@ public class LoginController {
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private void cargarUsuarios() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        ArrayList<Jugador> usuarios = new ArrayList<>();
+
+        // Leer y deserializar la lista de jugadores
+        try (FileReader reader = new FileReader("usuarios.json")) {
+            Type listType = new TypeToken<ArrayList<Jugador>>() {}.getType();
+            usuarios = gson.fromJson(reader, listType);
+        } catch (FileNotFoundException e) {
+            // Manejar el caso donde el archivo no se encuentra (puede estar vacío al principio)
+            System.out.println("Archivo de usuarios no encontrado. Se creará uno nuevo al guardar.");
+        } catch (IOException e) {
+            // Manejar otras posibles IOExcepciones
+            System.out.println("Error al leer el archivo de usuarios: " + e.getMessage());
+        }
+
+        // Si usuarios es null, inicializar como una lista vacía
+        if (usuarios == null) {
+            usuarios = new ArrayList<>();
+        }
+
+        // Actualizar los puntos de los jugadores en el juego basado en la lista de usuarios
+        for (Jugador jugador : juego.getJugadores()) {
+            for (Jugador jArchivo : usuarios) {
+                if (Objects.equals(jugador.getNombre(), jArchivo.getNombre())) {
+                    jugador.setPuntos(jArchivo.getPuntos());
+                    break; // Rompe el bucle interno una vez que se encuentra el jugador
+                }
+            }
         }
     }
 
