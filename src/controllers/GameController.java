@@ -2,20 +2,18 @@ package controllers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import models.ContenedorCartasC;
 import models.ContenedorCartasJ;
 import models.UnoGame;
@@ -25,11 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.time.Duration;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 
 import static controllers.LoginController.juego;
@@ -65,12 +59,14 @@ public class GameController {
     @FXML
     public static Carta cartaActual;
     @FXML
-    private static Button boton;
+    private static Button botonCartaEscogida;
     @FXML
     protected Button botonCartaActual;
 
     private Jugador jugador = juego.getJugadores().getFirst();
     private Jugador cpu = juego.getJugadores().getLast();
+
+    private PauseTransition pause = new PauseTransition(Duration.seconds(1));
 
     @FXML
     public void initialize(){
@@ -109,7 +105,7 @@ public class GameController {
 
             contenedorJ.agregarBoton(contenedorJ.crearBoton(jugador.getCartas().getTope()));
 
-            jugadaCPU();
+            delay(event -> { jugadaCPU(); }, 1);
         }
         else{
             textoEnJuegoAbajo.setText("¡Tienes cartas que puedes jugar!");
@@ -117,25 +113,25 @@ public class GameController {
 
         guardarPartida();
 
-        //guardarUsuario(jugador);
+        guardarUsuario(jugador);
     }
 
     public static void onBtnCartaClick(Button b){
         String id = b.getId();
         cartaActual = juego.getJugadores().getFirst().buscarCarta(id);
-        boton = b;
+        botonCartaEscogida = b;
     }
 
-    public void onBtnJugarCartaClick() throws InterruptedException, IOException {
+    public void onBtnJugarCartaClick() {
 
         if((cartaActual != null) && (cartaActual.esJugable(juego))){
             textoEnJuegoArriba.setText("");
             textoEnJuegoAbajo.setText("");
             jugador.jugar(juego, cartaActual);
 
-            contenedorJ.eliminarBoton(boton.getId());
+            contenedorJ.eliminarBoton(botonCartaEscogida.getId());
 
-            botonCartaActual.setGraphic(boton.getGraphic());
+            botonCartaActual.setGraphic(botonCartaEscogida.getGraphic());
 
             if(cartaActual.getTipo().equals("T4")){
                 boxEscogerColor.setDisable(false);
@@ -169,19 +165,21 @@ public class GameController {
                         if(cartaActual.getTipo().equals("CC")){
                             boxEscogerColor.setDisable(false);
                             btnColorEscogido.setDisable(false);
-                            jugadaCPU();
                         }
                         else{
                             if(jugador.getCartas().getMazo().size() == 1){
                                 textoEnJuegoAbajo.setText("¡" + nombreUsuario+" ha cantado UNO!");
-                                jugadaCPU();
+
+                                delay(event -> { jugadaCPU(); }, 1);
                             }
                             else {
                                 if (jugador.getCartas().getMazo().isEmpty()) {
-                                    contenedorJ.setDisable(true);
+
+                                    btnColorEscogido.setDisable(true);
                                     contenedorC.setDisable(true);
-                                    botonCartaActual.setDisable(true);
+                                    contenedorJ.setDisable(true);
                                     botonAgarrarCarta.setDisable(true);
+                                    boxEscogerColor.setDisable(true);
                                     textoAgarrarCarta.setDisable(true);
                                     textoEnJuegoArriba.setText("¡" + nombreUsuario + " ha ganado!");
                                     textoEnJuegoArriba.setFont(customFont80);
@@ -200,7 +198,7 @@ public class GameController {
                                     return;
                                 }
                                 else {
-                                    jugadaCPU();
+                                    delay(event -> { jugadaCPU(); }, 1);
                                 }
                             }
                         }
@@ -218,6 +216,7 @@ public class GameController {
     }
 
     public void jugadaCPU() {
+
         Carta carta = null;
 
         if(cpu.puedeJugar(juego)){
@@ -240,7 +239,8 @@ public class GameController {
                     jugador.agarrarCarta(juego);
                     contenedorJ.agregarBoton(contenedorJ.crearBoton(jugador.getCartas().getTope()));
                 }
-                jugadaCPU();
+
+                delay(event -> { jugadaCPU(); }, 1);
             }
             else{
                 if(carta.getTipo().equals("T2")){
@@ -250,12 +250,12 @@ public class GameController {
                     jugador.agarrarCarta(juego);
                     contenedorJ.agregarBoton(contenedorJ.crearBoton(jugador.getCartas().getTope()));
 
-                    jugadaCPU();
                 }
                 else{
                     if(carta.getTipo().equals("R") || carta.getTipo().equals("S")){
                         textoEnJuegoAbajo.setText("CPU repitió el turno");
-                        jugadaCPU();
+
+                        delay(event -> { jugadaCPU(); }, 1);
                     }
                     else{
                         if(cpu.getCartas().getMazo().size() == 1){
@@ -295,7 +295,6 @@ public class GameController {
             contenedorC.agregarBoton(contenedorC.crearBoton());
         }
 
-
         setImage(botonCartaActual);
         cartaActual = null;
 
@@ -315,9 +314,23 @@ public class GameController {
 
     }
 
-    public void onBtnSalirClick() throws InterruptedException {
+    public void onBtnSalirClick() throws IOException {
         guardarPartida();
-        btnSalir.getScene().getWindow().hide();
+        ((Stage) btnSalir.getScene().getWindow()).close();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(UnoGame.class.getResource("/views/LoginView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 700);
+
+        Image icon = new Image(UnoGame.class.getResourceAsStream("/views/recursos/cartaUno.png"));
+
+        Stage stage = new Stage();
+
+        stage.setTitle("uno-game-login");
+        stage.getIcons().add(icon);
+        stage.setScene(scene);
+
+        stage.show();
+
     }
 
     public void onBtnColorEscogidoClick() throws IOException {
@@ -328,8 +341,7 @@ public class GameController {
             textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
 
             if(cartaActual.getTipo().equals("CC")){
-                setImage(botonCartaActual);
-
+                jugadaCPU();
             }
 
         }
@@ -371,7 +383,7 @@ public class GameController {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        ArrayList<Jugador> usuarios = null;
+        ArrayList<Jugador> usuarios = new ArrayList<>();
 
         try(FileReader reader = new FileReader("usuarios.json")){
             usuarios = gson.fromJson(reader, ArrayList.class);
@@ -394,4 +406,6 @@ public class GameController {
             gson.toJson(usuarios, writer);
         }
     }
+
+
 }

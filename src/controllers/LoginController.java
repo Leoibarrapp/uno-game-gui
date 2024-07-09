@@ -3,11 +3,14 @@ package controllers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -18,6 +21,7 @@ import javafx.stage.Stage;
 import models.UnoGame;
 import models.game.*;
 
+import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -34,14 +38,17 @@ public class LoginController {
     @FXML
     public Label textoBienvenida1;
     @FXML
+    public ProgressBar barraProgreso;
+    @FXML
     private Label textoBienvenida;
-
     @FXML
     public  TextField campoUsuario;
     @FXML
     private Button btnPartidaNueva;
     @FXML
     private Button btnCargarPartida;
+    @FXML
+    public Button btnSalir;
 
     @FXML
     public void initialize(){
@@ -58,6 +65,10 @@ public class LoginController {
         btnCargarPartida.setFont(customFont20);
         btnCargarPartida.setPrefWidth(Region.USE_COMPUTED_SIZE);
         btnCargarPartida.setPrefHeight(Region.USE_COMPUTED_SIZE);
+
+        btnSalir.setFont(customFont20);
+        btnSalir.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        btnSalir.setPrefHeight(Region.USE_COMPUTED_SIZE);
     }
 
 
@@ -70,9 +81,10 @@ public class LoginController {
         if(juego.getGanador() == null){
             String nombreUsuario = campoUsuario.getText();
             textoBienvenida.setText("Cargando partida anterior...");
-            textoBienvenida1.setText("Bienvenido de nuevo, " + nombreUsuario);
+            textoBienvenida1.setText("Bienvenido de nuevo, " + juego.getJugadores().getFirst().getNombre());
 
-            mostrarVentanaJuego();
+            delay(event -> { mostrarBarraDeCarga(); }, 1);
+            delay(event -> { mostrarVentanaJuego(); }, 6);
         }
         else{
             textoBienvenida1.setTextFill(Color.YELLOW);
@@ -82,7 +94,7 @@ public class LoginController {
     }
 
     @FXML
-    protected void onBtnPartidaNuevaClick(){
+    protected void onBtnPartidaNuevaClick() throws InterruptedException {
 //        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //
         String nombreUsuario = campoUsuario.getText();
@@ -103,10 +115,13 @@ public class LoginController {
         juego = new Juego(descarte, pila, jugadores);
         juego.iniciarJuego();
 
-        mostrarVentanaJuego();
+        delay(event -> { mostrarBarraDeCarga(); }, 1);
+        delay(event -> { mostrarVentanaJuego(); }, 6);
+
     }
 
     private void mostrarVentanaJuego(){
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));
             Parent root = loader.load();
@@ -119,11 +134,27 @@ public class LoginController {
             stage.setScene(new Scene(root));
             stage.setFullScreen(true);
 
+            ((Stage) btnPartidaNueva.getScene().getWindow()).close();
+
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void mostrarBarraDeCarga(){
+        barraProgreso.setVisible(true);
+
+        delay(event -> barraProgreso.setProgress(0.2), 2);
+        delay(event -> barraProgreso.setProgress(0.4), 2.5);
+        delay(event -> barraProgreso.setProgress(0.6), 3);
+        delay(event -> barraProgreso.setProgress(0.8), 3.5);
+        delay(event -> barraProgreso.setProgress(1.0), 4);
+    }
+
+    public void onBtnSalirClick(){
+        ((Stage) btnSalir.getScene().getWindow()).close();
     }
 
     private void cargarPartida(){

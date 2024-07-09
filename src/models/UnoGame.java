@@ -1,12 +1,16 @@
 package models;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -24,7 +28,7 @@ public class UnoGame extends Application {
     public void start(Stage stage) throws IOException {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(UnoGame.class.getResource("/views/LoginView.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 700);
 
             Image icon = new Image(UnoGame.class.getResourceAsStream("/views/recursos/cartaUno.png"));
 
@@ -41,5 +45,11 @@ public class UnoGame extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public static void delay(EventHandler<ActionEvent> var1, double seconds){
+        PauseTransition pause = new PauseTransition(Duration.seconds(seconds));
+        pause.setOnFinished(var1);
+        pause.play();
     }
 }
