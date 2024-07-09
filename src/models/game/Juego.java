@@ -6,13 +6,14 @@ public class Juego {
     private Mazo mazoJuego;
     private Mazo mazoPila;
     private ArrayList<Jugador> jugadores;
+    private Carta cartaTope;
     private Jugador ganador = null;
     private int turno;
     private char colorActual;
 
 
     /**
-     * Constructor de models.game.Juego
+     * Constructor de Juego
      * @param mazoJuego es el mazo sobre el cual se estara jugando
      * @param mazoPila es el mazo del cual se agarraran cartas
      * @param jugadores son los jugadores del juego
@@ -21,6 +22,9 @@ public class Juego {
         this.mazoJuego = mazoJuego;
         this.mazoPila = mazoPila;
         this.jugadores = jugadores;
+    }
+
+    public Juego() {
     }
 
     public Mazo getMazoJuego() {
@@ -34,7 +38,13 @@ public class Juego {
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }
+    public Carta setCartaTope(Mazo mazoPila) {
+        return  mazoPila.getTope();
+    }
 
+    public Carta getCartaActual() {
+        return cartaTope;
+    }
     /**
      * El turno pasa al siguiente jugador
      */

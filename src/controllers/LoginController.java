@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import models.UnoGame;
@@ -25,7 +26,6 @@ import static models.UnoGame.*;
 
 public class LoginController {
     public static Juego juego;
-    public static String nombreUsuario;
 
     @FXML
     public Label textoTitulo;
@@ -65,18 +65,27 @@ public class LoginController {
     @FXML
     protected void onBtnCargarPartidaClick() {
 
-        nombreUsuario = campoUsuario.getText();
-        textoBienvenida.setText("Cargando partida anterior...");
-        textoBienvenida1.setText("Bienvenido de nuevo, " + nombreUsuario);
+        cargarPartida();
 
-        mostrarVentanaJuego();
+        if(juego.getGanador() == null){
+            String nombreUsuario = campoUsuario.getText();
+            textoBienvenida.setText("Cargando partida anterior...");
+            textoBienvenida1.setText("Bienvenido de nuevo, " + nombreUsuario);
+
+            mostrarVentanaJuego();
+        }
+        else{
+            textoBienvenida1.setTextFill(Color.YELLOW);
+            textoBienvenida1.setText( "La partida que está intentando cargar ya ha concluido.");
+            juego = null;
+        }
     }
 
     @FXML
     protected void onBtnPartidaNuevaClick(){
 //        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //
-        nombreUsuario = campoUsuario.getText();
+        String nombreUsuario = campoUsuario.getText();
 
         textoBienvenida.setText("Creando partida nueva...");
         textoBienvenida1.setText("Bienvenido, " + nombreUsuario);
@@ -88,7 +97,8 @@ public class LoginController {
         Mazo descarte = new Mazo();
 
         ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
-        jugadores.add(new Jugador(campoUsuario.getText())); jugadores.add(new CPU());
+        jugadores.add(new Jugador(campoUsuario.getText()));
+        jugadores.add(new Jugador("CPU"));
 
         juego = new Juego(descarte, pila, jugadores);
         juego.iniciarJuego();
@@ -113,6 +123,26 @@ public class LoginController {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void cargarPartida(){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        try {
+            FileReader reader = new FileReader("partida.json");
+            //juego = new Juego();
+            juego = gson.fromJson(reader, Juego.class);
+
+//            ArrayList<Jugador> jugadores = (ArrayList<Jugador>) juego.getJugadores();
+//            Mazo baraja = (Mazo) juego.getMazoPila();
+//            Mazo pila = (Mazo) juego.getMazoJuego();
+//
+//            Jugador jugador = jugadores.getFirst();
+//            Jugador cpu = jugadores.getLast();
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 }

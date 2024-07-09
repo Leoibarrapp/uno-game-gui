@@ -2,9 +2,11 @@ package models.game;
 
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Collections;
+import java.util.LinkedList;
 
 /**
- * los 4 colores disponibles para crear las models.game.CartaColor
+ * los 4 colores disponibles para crear las CartaColor
  */
 enum ColorCarta{ R, G, B, Y };
 
@@ -34,21 +36,21 @@ public class Mazo {
     public LinkedList<Carta> crear(){
 
         for (ColorCarta color : ColorCarta.values()) {
-            mazo.add(new CartaColor(color.name().charAt(0), "0"));
+            mazo.add(new Carta(color.name().charAt(0), "0"));
 
             for (int numero = 1; numero <= 9; numero++) {
-                mazo.add(new CartaColor(color.name().charAt(0), String.valueOf(numero)));
-                mazo.add(new CartaColor(color.name().charAt(0), String.valueOf(numero)));
+                mazo.add(new Carta(color.name().charAt(0), String.valueOf(numero)));
+                mazo.add(new Carta(color.name().charAt(0), String.valueOf(numero)));
             }
 
-            mazo.add(new CartaColor(color.name().charAt(0), "T2")); mazo.add(new CartaColor(color.name().charAt(0), "T2"));
-            mazo.add(new CartaColor(color.name().charAt(0), "R")); mazo.add(new CartaColor(color.name().charAt(0), "R"));
-            mazo.add(new CartaColor(color.name().charAt(0), "S")); mazo.add(new CartaColor(color.name().charAt(0), "S"));
+            mazo.add(new Carta(color.name().charAt(0), "T2")); mazo.add(new Carta(color.name().charAt(0), "T2"));
+            mazo.add(new Carta(color.name().charAt(0), "R")); mazo.add(new Carta(color.name().charAt(0), "R"));
+            mazo.add(new Carta(color.name().charAt(0), "S")); mazo.add(new Carta(color.name().charAt(0), "S"));
         }
 
         for(int i = 0; i < 4; i ++){
-            mazo.add(new CartaComodin('W', "T4"));
-            mazo.add(new CartaComodin('W', "CC"));
+            mazo.add(new Carta('W', "T4"));
+            mazo.add(new Carta('W', "CC"));
         }
 
         return mazo;
@@ -71,7 +73,7 @@ public class Mazo {
 
     /**
      * elimina una carta del mazo
-     * @param carta la carta a eliminarBoton
+     * @param carta la carta a eliminar
      */
     public void eliminarCarta(Carta carta) {
         mazo.remove(carta);
@@ -79,7 +81,7 @@ public class Mazo {
 
     /**
      * elimina una carta del mazo
-     * @param index la posicion de la carta a eliminarBoton
+     * @param index la posicion de la carta a eliminar
      */
     public void eliminarCarta(int index) {
         mazo.remove(index);

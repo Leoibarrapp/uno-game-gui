@@ -1,6 +1,6 @@
 package models.game;
 
-import models.ContenedorCartasC;
+import java.util.Objects;
 
 public class Jugador{
     private String nombre;
@@ -10,6 +10,9 @@ public class Jugador{
     public Jugador(String nombre) {
         this.nombre = nombre;
     }
+
+//    public Jugador() {
+//    }
 
     public String getNombre() {
         return nombre;
@@ -23,16 +26,9 @@ public class Jugador{
         this.cartas = cartas;
     }
 
-    public int getPuntos() {
-        return puntos;
-    }
-
-    public void setPuntos(int puntos) {
-        this.puntos = puntos;
-    }
 
     /**
-     * Verifica si el jugador tiene alguna carta que pueda colocar encima del mazo de models.game.Juego
+     * Verifica si el jugador tiene alguna carta que pueda colocar encima del mazo de Juego
      * @param juego necesita acceder al tope del mazo juego actual
      * @return si retorna falso entonces el jugador pierde el turno y agarra una carta
      */
@@ -107,12 +103,12 @@ public class Jugador{
 
     /**
      * Cuando la carta esJugable entonces se usa esta funcion
-     * El jugador se coloca en el mazo del models.game.Juego y luego se realiza la accion correspondiente con usar()
+     * El jugador se coloca en el mazo del Juego y luego se realiza la accion correspondiente con usar()
      * @param juego
      * @param carta es la carta a jugar
      */
     public void jugar(Juego juego, Carta carta){
-      
+
         juego.getMazoJuego().agregarCarta(carta);
         this.cartas.eliminarCarta(carta);
 
@@ -121,34 +117,80 @@ public class Jugador{
         }
 
         juego.setColorActual(carta.getColor());
-        carta.usar(juego);
+        //carta.usar(juego);
 
         if (cartas.getMazo().isEmpty()) {
             juego.setGanador(this);
         }
     }
 
-    /**
-     *@return la cantidad de cartas que le quedan al jugador
-     */
+
     public int cartasRestantes(){
         return cartas.getMazo().size();
     }
 
 
+
+
     /**
-     * Sobreescribe toString() para imprimir la informacion de un jugador
-     * @return el nombre del jugador + su mazo + la cantidad de cartas que le quedan
+     * EL CPU escoge un color de manera aleatoria para cuando corresponde un cambio de color
+     * @return el color escogido por el CPU
      */
 
-    public String toString(){
-        String s = nombre + " " + cartas + "\u001B[37m " + cartas.getMazo().size() + " cartas restantes";
-
-        if(cartas.getMazo().size() == 1){
-            s = s + "\u001B[33m UNO!";
+    public Carta escogerCarta(Juego juego){
+        Carta escogida = null;
+        for(Carta carta : this.getCartas().getMazo()){
+            if(carta.esJugable(juego)){
+                escogida = carta;
+                break;
+            }
         }
-
-        return s + "\u001B[0m";
+        return escogida;
     }
 
+
+    public char escogerColor(){
+        int numero = (int) (Math.random()*4);
+        char color = ' ';
+        switch(numero){
+            case 0: color = 'R';
+                break;
+            case 1: color = 'G';
+                break;
+            case 2: color = 'B';
+                break;
+            case 3: color = 'Y';
+                break;
+        }
+        return color;
+    }
+
+
+    public String toString() {
+
+        if(Objects.equals(this.getNombre(), "CPU")){
+            String s = "CPU [...] \u001B[37m " + this.getCartas().getMazo().size() + " cartas restantes";
+
+            if(this.getCartas().getMazo().size() == 1){
+                s = s + "\u001B[33m UNO!";
+            }
+
+            return s + "\u001B[0m";
+        }else{
+            String s = nombre + " " + cartas + "\u001B[37m " + cartas.getMazo().size() + " cartas restantes";
+
+            if (cartas.getMazo().size() == 1) {
+                s = s + "\u001B[33m UNO!";
+            }
+
+            return s + "\u001B[0m";
+        }}
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
+    }
 }
