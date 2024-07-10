@@ -50,7 +50,7 @@ public class GameController {
     @FXML
     private Label textoAgarrarCarta;
     @FXML
-    private Button btnSalir;
+    private Button btnVolver;
     @FXML
     private Button botonAgarrarCarta;
     @FXML
@@ -84,7 +84,7 @@ public class GameController {
 
         textoAgarrarCarta.setFont(customFont20);
 
-        btnSalir.setFont(customFont20);
+        btnVolver.setFont(customFont20);
 
         btnCantarUno.setFont(customFont30);
         btnCantarUno.setPrefWidth(Region.USE_COMPUTED_SIZE);
@@ -328,14 +328,15 @@ public class GameController {
 
     }
 
-    public void onBtnSalirClick() throws IOException {
+
+    public void onBtnVolverClick() throws IOException {
 
         if(juego.getGanador() != null){
             guardarUsuario(juego.getGanador());
         }
 
         guardarPartida();
-        ((Stage) btnSalir.getScene().getWindow()).close();
+        ((Stage) btnVolver.getScene().getWindow()).close();
 
         FXMLLoader fxmlLoader = new FXMLLoader(UnoGame.class.getResource("/views/LoginView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 700);
