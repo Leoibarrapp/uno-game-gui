@@ -1,5 +1,8 @@
 package controllers;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,7 +14,18 @@ import javafx.scene.text.Text;
 import models.game.Jugador;
 import models.game.Scoreboard;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.AbstractList;
+import java.util.ArrayList;
+
 public class StatisticsController {
+    @FXML
+    public Button BtnCargar;
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
     @FXML
     private Button btnSalir;
     @FXML
@@ -31,16 +45,32 @@ public class StatisticsController {
        this.colJugador.setCellValueFactory(new PropertyValueFactory<>("nombre"));
        this.colPuntaje.setCellValueFactory(new PropertyValueFactory<>("puntaje"));
 
-        //setEstadisticasTabla();
+        ArrayList<Jugador> usuarios = cargarEstadisticas();
+
+
+        setEstadisticasTabla(usuarios);
 
     }
     @FXML
-    public void setEstadisticasTabla(Scoreboard scoreboard) {
-         for (Jugador jugador : scoreboard.getJugadores()) {
+    public void setEstadisticasTabla(ArrayList<Jugador> usuarios) {
 
-             estadisticas.add(jugador);
+        for (int i = 0; i < usuarios.size(); i++) {
+
+            this.estadisticas.add(usuarios.get(i));
              this.estadisticasTabla.setItems(estadisticas);
          }
 
+    }
+    @FXML
+    public ArrayList cargarEstadisticas() {
+        ArrayList<Jugador> usuarios = new ArrayList<>();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        try (FileReader reader = new FileReader("usuarios.json")) {
+            Type listType = new TypeToken<ArrayList<Jugador>>() {}.getType();
+            usuarios = gson.fromJson(reader, listType);
+        } catch (IOException e) {
+        }
+        return usuarios;
     }
 }

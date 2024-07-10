@@ -41,5 +41,76 @@
       ]
     },
     "puntaje": 0
+  },
+  {
+    "nombre": "",
+    "cartas": {
+      "mazo": [
+        {
+          "color": "W",
+          "tipo": "CC",
+          "urlImagen": "/views/recursos/W-CC.png"
+        },
+        {
+          "color": "Y",
+          "tipo": "1",
+          "urlImagen": "/views/recursos/Y-1.png"
+        },
+        {
+          "color": "Y",
+          "tipo": "S",
+          "urlImagen": "/views/recursos/Y-S.png"
+        },
+        {
+          "color": "B",
+          "tipo": "0",
+          "urlImagen": "/views/recursos/B-0.png"
+        },
+        {
+          "color": "B",
+          "tipo": "7",
+          "urlImagen": "/views/recursos/B-7.png"
+        },
+        {
+          "color": "B",
+          "tipo": "7",
+          "urlImagen": "/views/recursos/B-7.png"
+        }
+      ]
+    },
+    "puntaje": 0
+  },
+  {
+    "nombre": "Pepe",
+    "cartas": {
+      "mazo": [
+        {
+          "color": "B",
+          "tipo": "2",
+          "urlImagen": "/views/recursos/B-2.png"
+        },
+        {
+          "color": "G",
+          "tipo": "S",
+          "urlImagen": "/views/recursos/G-S.png"
+        },
+        {
+          "color": "G",
+          "tipo": "8",
+          "urlImagen": "/views/recursos/G-8.png"
+        },
+        {
+          "color": "B",
+          "tipo": "2",
+          "urlImagen": "/views/recursos/B-2.png"
+        },
+        {
+          "color": "Y",
+          "tipo": "4",
+          "urlImagen": "/views/recursos/Y-4.png"
+        }
+      ]
+    },
+    "puntaje": 0
   }
 ]
