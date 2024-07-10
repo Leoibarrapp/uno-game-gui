@@ -49,7 +49,7 @@ public class LoginController {
     @FXML
     private Label textoBienvenida;
     @FXML
-    private  TextField campoUsuario;
+    private TextField campoUsuario;
     @FXML
     private Button btnPartidaNueva;
     @FXML
@@ -58,7 +58,7 @@ public class LoginController {
     private Button btnSalir;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         textoBienvenida.setFont(customFont20);
         textoBienvenida1.setFont(customFont20);
         textoIntroduceUsuario.setFont(customFont30);
@@ -83,18 +83,19 @@ public class LoginController {
     }
 
 
-
     @FXML
     protected void onBtnCargarPartidaClick() {
 
         cargarPartida();
 
-        if(juego.getGanador() == null){
+        if (juego.getGanador() == null) {
             String nombreUsuario = campoUsuario.getText();
             textoBienvenida.setText("Cargando partida anterior...");
             textoBienvenida1.setText("Bienvenido de nuevo, " + juego.getJugadores().getFirst().getNombre());
 
-            delay(event -> { mostrarBarraDeCarga(); }, 1);
+            delay(event -> {
+                mostrarBarraDeCarga();
+            }, 1);
 
             delay(event -> {
                 try {
@@ -103,10 +104,9 @@ public class LoginController {
                     throw new RuntimeException(e);
                 }
             }, 6);
-        }
-        else{
+        } else {
             textoBienvenida1.setTextFill(Color.YELLOW);
-            textoBienvenida1.setText( "La partida que está intentando cargar ya ha concluido.");
+            textoBienvenida1.setText("La partida que está intentando cargar ya ha concluido.");
             juego = null;
         }
     }
@@ -122,7 +122,8 @@ public class LoginController {
         //usuario.setText(campoUsuario.getText());
 
         Mazo pila = new Mazo();
-        pila.crear(); pila.barajear();
+        pila.crear();
+        pila.barajear();
 
         Mazo descarte = new Mazo();
 
@@ -133,7 +134,9 @@ public class LoginController {
         juego = new Juego(descarte, pila, jugadores);
         juego.iniciarJuego();
 
-        delay(event -> { mostrarBarraDeCarga(); }, 1);
+        delay(event -> {
+            mostrarBarraDeCarga();
+        }, 1);
 
         delay(event -> {
             try {
@@ -174,7 +177,7 @@ public class LoginController {
         }
     }
 
-    private void mostrarBarraDeCarga(){
+    private void mostrarBarraDeCarga() {
         barraProgreso.setVisible(true);
 
         delay(event -> barraProgreso.setProgress(0.2), 2);
@@ -184,11 +187,11 @@ public class LoginController {
         delay(event -> barraProgreso.setProgress(1.0), 4);
     }
 
-    public void onBtnSalirClick(){
+    public void onBtnSalirClick() {
         ((Stage) btnSalir.getScene().getWindow()).close();
     }
 
-    private void cargarPartida(){
+    private void cargarPartida() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try {
@@ -215,7 +218,8 @@ public class LoginController {
 
         // Leer y deserializar la lista de jugadores
         try (FileReader reader = new FileReader("usuarios.json")) {
-            Type listType = new TypeToken<ArrayList<Jugador>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Jugador>>() {
+            }.getType();
             usuarios = gson.fromJson(reader, listType);
         } catch (FileNotFoundException e) {
             // Manejar el caso donde el archivo no se encuentra (puede estar vacío al principio)
@@ -240,8 +244,26 @@ public class LoginController {
             }
         }
     }
+    @FXML
+    public void onBtnEstadisticasClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/StatisticsView.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
 
-    public void onBtnEstadisticasClick() {
+            Image icon = new Image(UnoGame.class.getResourceAsStream("/views/recursos/cartaUno.png"));
 
+            stage.setTitle("uno-statistics");
+            stage.getIcons().add(icon);
+            stage.setScene(new Scene(root));
+            //stage.setFullScreen(true);
+
+            ((Stage) btnEstadisticas.getScene().getWindow()).close();
+
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
