@@ -27,7 +27,7 @@
          <items>
             <ToolBar style="-fx-background-color: a;">
                <items>
-                  <Button fx:id="btnVolver" mnemonicParsing="false" onAction="#onBtnVolverClick" prefHeight="42.0" prefWidth="87.0" text="Volver" />
+                  <Button fx:id="btnVolver" mnemonicParsing="false" onAction="#onBtnVolverClick" prefHeight="42.0" prefWidth="87.0" style="-fx-background-color: d1c800;" text="Volver" />
                </items>
             </ToolBar>
          </items>

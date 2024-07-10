@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="432.0" prefWidth="600.0" style="-fx-background-color: #2E69C7;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatisticsController">
-    <Button fx:id="btnVolver" layoutX="26.0" layoutY="34.0" mnemonicParsing="false" onAction="#onBtnVolverClick" prefHeight="42.0" prefWidth="79.0" text="Volver" />
+    <Button fx:id="btnVolver" layoutX="26.0" layoutY="34.0" mnemonicParsing="false" onAction="#onBtnVolverClick" prefHeight="42.0" prefWidth="79.0" style="-fx-background-color: d1c800;" text="Volver" />
     <TableView fx:id="estadisticasTabla" layoutX="147.0" layoutY="100.0" prefHeight="272.0" prefWidth="306.0">
         <columns>
             <TableColumn fx:id="colJugador" prefWidth="178.0" text="Jugador" />
