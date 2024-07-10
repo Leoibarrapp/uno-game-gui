@@ -1,42 +1,23 @@
 [
   {
-    "nombre": "leo",
+    "nombre": "",
     "cartas": {
-      "mazo": [
-        {
-          "color": "R",
-          "tipo": "2",
-          "urlImagen": "/views/recursos/R-2.png"
-        },
-        {
-          "color": "Y",
-          "tipo": "5",
-          "urlImagen": "/views/recursos/Y-5.png"
-        },
-        {
-          "color": "R",
-          "tipo": "3",
-          "urlImagen": "/views/recursos/R-3.png"
-        },
-        {
-          "color": "R",
-          "tipo": "7",
-          "urlImagen": "/views/recursos/R-7.png"
-        },
-        {
-          "color": "R",
-          "tipo": "5",
-          "urlImagen": "/views/recursos/R-5.png"
-        }
-      ]
+      "mazo": []
     },
-    "puntos": 414
+    "puntaje": 27
   },
   {
     "nombre": "CPU",
     "cartas": {
       "mazo": []
     },
-    "puntos": 107
+    "puntaje": 90
+  },
+  {
+    "nombre": "leo",
+    "cartas": {
+      "mazo": []
+    },
+    "puntaje": 185
   }
 ]
