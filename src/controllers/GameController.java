@@ -3,7 +3,6 @@ package controllers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -161,12 +160,58 @@ public class GameController {
                 case "CC":
                     ventanaModalEscogerColor();
                     textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
-                    break;
+                default:
+                    if(jugador.getCartas().getMazo().size() == 1){
+                        btnCantarUno.setVisible(true);
+                        btnCantarUno.setDisable(false);
+
+                        delay( event -> { btnCantarUno.setVisible(false); }, 2);
+
+                        delay(event -> {
+                            if(btnCantarUno.isDisabled() == false){
+                                textoEnJuegoArriba.setTextFill(Color.ORANGE); textoEnJuegoArriba.setText("¡No has cantado uno!");
+                                textoEnJuegoAbajo.setTextFill(Color.ORANGE); textoEnJuegoAbajo.setText("Fuiste penalizado con +2 cartas");
+
+                                for(int i = 0; i < 2; i++){
+                                    jugador.agarrarCarta(juego);
+                                    contenedorJ.agregarBoton(contenedorJ.crearBoton(jugador.getCartas().getTope()));
+                                }
+                            }
+                        }, 2);
+
+                        delay(event -> { btnCantarUno.setVisible(false); }, 2 );
+                        delay(event -> {
+                            textoEnJuegoArriba.setText(""); textoEnJuegoArriba.setTextFill(Color.WHITE);
+                            textoEnJuegoAbajo.setText(""); textoEnJuegoAbajo.setTextFill(Color.WHITE);
+                        }, 6);
+
+                    }
+                    else {
+                        if (jugador.getCartas().getMazo().isEmpty()) {
+
+                            contenedorC.setDisable(true);
+                            contenedorJ.setDisable(true);
+                            botonAgarrarCarta.setDisable(true);
+                            textoAgarrarCarta.setDisable(true);
+                            textoEnJuegoArriba.setText("¡" + nombreUsuario + " ha ganado!");
+                            textoEnJuegoArriba.setFont(customFont80);
+
+                            int puntos = obtenerPuntosGanador(cpu);
+
+                            textoEnJuegoAbajo.setText(puntos + " puntos");
+                            textoEnJuegoAbajo.setFont(customFont80);
+
+                            puntos += jugador.getPuntaje();
+
+                            juego.setGanador(jugador);
+                            jugador.setPuntaje(puntos);
+                            return;
+                        }
+                        else{
+                            delay(event -> { jugadaCPU(); }, 1);
+                        }
+                    }
             }
-
-            cantarUno();
-            delay(event -> { jugadaCPU(); }, 1);
-
         }
         else{
             cartaActual = null;
@@ -245,10 +290,10 @@ public class GameController {
                     textoEnJuegoAbajo.setText(puntos + " puntos");
                     textoEnJuegoAbajo.setFont(customFont80);
 
-                    puntos += cpu.getPuntos();
+                    puntos += cpu.getPuntaje();
 
                     juego.setGanador(cpu);
-                    cpu.setPuntos(puntos);
+                    cpu.setPuntaje(puntos);
 
                     return;
                 }
@@ -426,12 +471,14 @@ public class GameController {
                 textoEnJuegoAbajo.setText(puntos + " puntos");
                 textoEnJuegoAbajo.setFont(customFont80);
 
-                puntos += jugador.getPuntos();
+                puntos += jugador.getPuntaje();
 
                 juego.setGanador(jugador);
-                jugador.setPuntos(puntos);
-
+                jugador.setPuntaje(puntos);
                 return;
+            }
+            else{
+
             }
         }
     }

@@ -6,8 +6,8 @@ module com.uno {
     requires java.desktop;
 
     opens controllers to javafx.fxml;
-    opens models to javafx.fxml;
     opens models.game to com.google.gson, javafx.base;
 
     exports models;
+    opens models to com.google.gson, javafx.base, javafx.fxml;
 }

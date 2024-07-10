@@ -1,4 +1,6 @@
-package models.game;
+package models;
+import models.game.Jugador;
+
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Objects;

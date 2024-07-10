@@ -186,11 +186,11 @@ public class Jugador{
             return s + "\u001B[0m";
         }}
 
-    public int getPuntos() {
+    public int getPuntaje() {
         return puntaje;
     }
 
-    public void setPuntos(int puntaje) {
+    public void setPuntaje(int puntaje) {
         this.puntaje = puntaje;
     }
 }

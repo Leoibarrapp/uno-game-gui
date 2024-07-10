@@ -2,7 +2,43 @@
   {
     "nombre": "",
     "cartas": {
-      "mazo": []
+      "mazo": [
+        {
+          "color": "Y",
+          "tipo": "9",
+          "urlImagen": "/views/recursos/Y-9.png"
+        },
+        {
+          "color": "W",
+          "tipo": "T4",
+          "urlImagen": "/views/recursos/W-T4.png"
+        },
+        {
+          "color": "B",
+          "tipo": "4",
+          "urlImagen": "/views/recursos/B-4.png"
+        },
+        {
+          "color": "B",
+          "tipo": "1",
+          "urlImagen": "/views/recursos/B-1.png"
+        },
+        {
+          "color": "Y",
+          "tipo": "8",
+          "urlImagen": "/views/recursos/Y-8.png"
+        },
+        {
+          "color": "R",
+          "tipo": "8",
+          "urlImagen": "/views/recursos/R-8.png"
+        },
+        {
+          "color": "G",
+          "tipo": "6",
+          "urlImagen": "/views/recursos/G-6.png"
+        }
+      ]
     },
     "puntaje": 27
   },
@@ -11,13 +47,13 @@
     "cartas": {
       "mazo": []
     },
-    "puntaje": 90
+    "puntaje": 191
   },
   {
     "nombre": "leo",
     "cartas": {
       "mazo": []
     },
-    "puntaje": 185
+    "puntaje": 359
   }
 ]
