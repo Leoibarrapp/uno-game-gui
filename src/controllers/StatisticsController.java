@@ -1,46 +1,52 @@
-package controllers;
+package models.game;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Objects;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.Text;
-import models.game.Jugador;
-import models.game.Scoreboard;
+public class Scoreboard {
+    public LinkedList<Jugador> jugadores;
 
-public class StatisticsController {
-    @FXML
-    private Button btnSalir;
-    @FXML
-    private TableView<Jugador> estadisticasTabla;
-    @FXML
-    private Text estadisticasTxt;
-    @FXML
-    private TableColumn colJugador;
-    @FXML
-    private TableColumn colPuntaje;
-    @FXML
-    private ObservableList<Jugador> estadisticas;
 
-    @FXML
-    public void initialize() {
-       estadisticas = FXCollections.observableArrayList();
-       this.colJugador.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-       this.colPuntaje.setCellValueFactory(new PropertyValueFactory<>("puntaje"));
+    public Scoreboard() {}
 
-        //setEstadisticasTabla();
-
+    public void crear() {
+        this.jugadores = new LinkedList<>();
     }
-    @FXML
-    public void setEstadisticasTabla(Scoreboard scoreboard) {
-         for (Jugador jugador : scoreboard.getJugadores()) {
+    public void agregarJugador(Jugador jugador) {
+        jugadores.add(jugador);
+    }
 
-             estadisticas.add(jugador);
-             this.estadisticasTabla.setItems(estadisticas);
-         }
+    public LinkedList<Jugador> getJugadores() {
+        return jugadores;
+    }
 
+    public void ordenar() {
+        this.jugadores.sort(new Comparator<Jugador>() {
+            public int compare(Jugador jugador1, Jugador jugador2) {
+                return Integer.compare(jugador2.getPuntaje(), jugador1.getPuntaje());
+            }
+        });
+    }
+
+    public boolean buscar(Jugador jugador1) {
+        for (Jugador jugador : jugadores) {
+            if (Objects.equals(jugador.getNombre(), jugador1.getNombre())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void reemplazar(Jugador jugador1) {
+        for (Jugador jugador : jugadores) {
+            if (Objects.equals(jugador.getNombre(), jugador1.getNombre())) {
+                jugador.setPuntaje(jugador1.getPuntaje());
+            }
+        }
+    }
+
+    public void imprimir() {
+        for (Jugador jugador : jugadores) {
+            System.out.println("Jugador " + jugador.getNombre() + ", puntaje " + jugador.getPuntaje());
+        }
     }
 }
