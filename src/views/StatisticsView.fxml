@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatisticsController">
+    <Button fx:id="btnSalir" layoutX="29.0" layoutY="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="79.0"
+            text="Volver"/>
+    <TableView fx:id="estadisticasTabla" layoutX="137.0" layoutY="100.0" prefHeight="272.0" prefWidth="306.0">
+      <columns>
+          <TableColumn fx:id="colJugador" prefWidth="208.0" text="Jugador"/>
+          <TableColumn fx:id="colPuntaje" prefWidth="97.0" text="Puntaje"/>
+      </columns>
+    </TableView>
+    <Text fx:id="estadisticasTxt" layoutX="215.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="Estadisticas">
+        <font>
+          <Font size="30.0"/>
+        </font>
+    </Text>
+</AnchorPane>
