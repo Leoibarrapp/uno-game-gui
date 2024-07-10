@@ -3,7 +3,6 @@ package controllers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -85,6 +84,7 @@ public class GameController {
         textoAgarrarCarta.setFont(customFont20);
 
         btnVolver.setFont(customFont20);
+        btnVolver.setPrefWidth(Region.USE_COMPUTED_SIZE);
 
         btnCantarUno.setFont(customFont30);
         btnCantarUno.setPrefWidth(Region.USE_COMPUTED_SIZE);
@@ -130,11 +130,6 @@ public class GameController {
             botonCartaActual.setGraphic(botonCartaEscogida.getGraphic());
 
             switch (cartaActual.getTipo()){
-                case "CC":
-                    ventanaModalEscogerColor();
-                    textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
-
-                    break;
                 case "T4":
 
                     for(int i = 0; i < 4; i++){
@@ -146,7 +141,7 @@ public class GameController {
                     textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
 
                     textoEnJuegoAbajo.setText("¡Repites turno!");
-
+                    cantarUno();
                     return;
                 case "T2":
                     cpu.agarrarCarta(juego);
@@ -156,65 +151,67 @@ public class GameController {
                     contenedorC.agregarBoton(contenedorC.crearBoton());
 
                     textoEnJuegoAbajo.setText("¡Repites turno!");
-
+                    cantarUno();
                     return;
                 case "S", "R":
                     textoEnJuegoAbajo.setText("¡Repites turno!");
-
+                    cantarUno();
                     return;
-            }
+                case "CC":
+                    ventanaModalEscogerColor();
+                    textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
+                default:
+                    if(jugador.getCartas().getMazo().size() == 1){
+                        btnCantarUno.setVisible(true);
+                        btnCantarUno.setDisable(false);
 
-            if(jugador.getCartas().getMazo().size() == 1){
-                btnCantarUno.setVisible(true);
-                btnCantarUno.setDisable(false);
+                        delay( event -> { btnCantarUno.setVisible(false); }, 2);
 
-                delay( event -> { btnCantarUno.setVisible(false); }, 2);
+                        delay(event -> {
+                            if(btnCantarUno.isDisabled() == false){
+                                textoEnJuegoArriba.setTextFill(Color.ORANGE); textoEnJuegoArriba.setText("¡No has cantado uno!");
+                                textoEnJuegoAbajo.setTextFill(Color.ORANGE); textoEnJuegoAbajo.setText("Fuiste penalizado con +2 cartas");
 
-                delay(event -> {
-                    if(btnCantarUno.isDisabled() == false){
-                        textoEnJuegoArriba.setTextFill(Color.ORANGE); textoEnJuegoArriba.setText("¡No has cantado uno!");
-                        textoEnJuegoAbajo.setTextFill(Color.ORANGE); textoEnJuegoAbajo.setText("Fuiste penalizado con +2 cartas");
+                                for(int i = 0; i < 2; i++){
+                                    jugador.agarrarCarta(juego);
+                                    contenedorJ.agregarBoton(contenedorJ.crearBoton(jugador.getCartas().getTope()));
+                                }
+                            }
+                        }, 2);
 
-                        for(int i = 0; i < 2; i++){
-                            jugador.agarrarCarta(juego);
-                            contenedorJ.agregarBoton(contenedorJ.crearBoton(jugador.getCartas().getTope()));
+                        delay(event -> { btnCantarUno.setVisible(false); }, 2 );
+                        delay(event -> {
+                            textoEnJuegoArriba.setText(""); textoEnJuegoArriba.setTextFill(Color.WHITE);
+                            textoEnJuegoAbajo.setText(""); textoEnJuegoAbajo.setTextFill(Color.WHITE);
+                        }, 6);
+
+                    }
+                    else {
+                        if (jugador.getCartas().getMazo().isEmpty()) {
+
+                            contenedorC.setDisable(true);
+                            contenedorJ.setDisable(true);
+                            botonAgarrarCarta.setDisable(true);
+                            textoAgarrarCarta.setDisable(true);
+                            textoEnJuegoArriba.setText("¡" + nombreUsuario + " ha ganado!");
+                            textoEnJuegoArriba.setFont(customFont80);
+
+                            int puntos = obtenerPuntosGanador(cpu);
+
+                            textoEnJuegoAbajo.setText(puntos + " puntos");
+                            textoEnJuegoAbajo.setFont(customFont80);
+
+                            puntos += jugador.getPuntaje();
+
+                            juego.setGanador(jugador);
+                            jugador.setPuntaje(puntos);
+                            return;
+                        }
+                        else{
+                            delay(event -> { jugadaCPU(); }, 1);
                         }
                     }
-                }, 2);
-
-                delay(event -> { btnCantarUno.setVisible(false); }, 2 );
-                delay(event -> {
-                    textoEnJuegoArriba.setText(""); textoEnJuegoArriba.setTextFill(Color.WHITE);
-                    textoEnJuegoAbajo.setText(""); textoEnJuegoAbajo.setTextFill(Color.WHITE);
-                }, 6);
-
             }
-            else {
-                if (jugador.getCartas().getMazo().isEmpty()) {
-
-                    contenedorC.setDisable(true);
-                    contenedorJ.setDisable(true);
-                    botonAgarrarCarta.setDisable(true);
-                    textoAgarrarCarta.setDisable(true);
-                    textoEnJuegoArriba.setText("¡" + nombreUsuario + " ha ganado!");
-                    textoEnJuegoArriba.setFont(customFont80);
-
-                    int puntos = obtenerPuntosGanador(cpu);
-
-                    textoEnJuegoAbajo.setText(puntos + " puntos");
-                    textoEnJuegoAbajo.setFont(customFont80);
-
-                    puntos += jugador.getPuntaje();
-
-                    juego.setGanador(jugador);
-                    jugador.setPuntaje(puntos);
-
-                    return;
-                }
-            }
-
-            delay(event -> { jugadaCPU(); }, 1);
-
         }
         else{
             cartaActual = null;
@@ -428,8 +425,61 @@ public class GameController {
     }
 
     public void onBtnCantarUnoClick() {
-        textoEnJuegoAbajo.setText("¡" + nombreUsuario + "ha cantado uno!");
+        textoEnJuegoAbajo.setText("¡" + nombreUsuario + " ha cantado uno!");
         btnCantarUno.setVisible(false);
         btnCantarUno.setDisable(true);
+    }
+
+    public void cantarUno(){
+        if(jugador.getCartas().getMazo().size() == 1){
+            btnCantarUno.setVisible(true);
+            btnCantarUno.setDisable(false);
+
+            delay( event -> { btnCantarUno.setVisible(false); }, 2);
+
+            delay(event -> {
+                if(btnCantarUno.isDisabled() == false){
+                    textoEnJuegoArriba.setTextFill(Color.ORANGE); textoEnJuegoArriba.setText("¡No has cantado uno!");
+                    textoEnJuegoAbajo.setTextFill(Color.ORANGE); textoEnJuegoAbajo.setText("Fuiste penalizado con +2 cartas");
+
+                    for(int i = 0; i < 2; i++){
+                        jugador.agarrarCarta(juego);
+                        contenedorJ.agregarBoton(contenedorJ.crearBoton(jugador.getCartas().getTope()));
+                    }
+                }
+            }, 2);
+
+            delay(event -> { btnCantarUno.setVisible(false); }, 2 );
+            delay(event -> {
+                textoEnJuegoArriba.setText(""); textoEnJuegoArriba.setTextFill(Color.WHITE);
+                textoEnJuegoAbajo.setText(""); textoEnJuegoAbajo.setTextFill(Color.WHITE);
+            }, 6);
+
+        }
+        else {
+            if (jugador.getCartas().getMazo().isEmpty()) {
+
+                contenedorC.setDisable(true);
+                contenedorJ.setDisable(true);
+                botonAgarrarCarta.setDisable(true);
+                textoAgarrarCarta.setDisable(true);
+                textoEnJuegoArriba.setText("¡" + nombreUsuario + " ha ganado!");
+                textoEnJuegoArriba.setFont(customFont80);
+
+                int puntos = obtenerPuntosGanador(cpu);
+
+                textoEnJuegoAbajo.setText(puntos + " puntos");
+                textoEnJuegoAbajo.setFont(customFont80);
+
+                puntos += jugador.getPuntaje();
+
+                juego.setGanador(jugador);
+                jugador.setPuntaje(puntos);
+                return;
+            }
+            else{
+
+            }
+        }
     }
 }

@@ -112,5 +112,48 @@
       ]
     },
     "puntaje": 0
+  },
+  {
+    "nombre": "",
+    "cartas": {
+      "mazo": [
+        {
+          "color": "G",
+          "tipo": "4",
+          "urlImagen": "/views/recursos/G-4.png"
+        },
+        {
+          "color": "W",
+          "tipo": "CC",
+          "urlImagen": "/views/recursos/W-CC.png"
+        },
+        {
+          "color": "G",
+          "tipo": "4",
+          "urlImagen": "/views/recursos/G-4.png"
+        },
+        {
+          "color": "Y",
+          "tipo": "T2",
+          "urlImagen": "/views/recursos/Y-T2.png"
+        },
+        {
+          "color": "R",
+          "tipo": "T2",
+          "urlImagen": "/views/recursos/R-T2.png"
+        },
+        {
+          "color": "Y",
+          "tipo": "7",
+          "urlImagen": "/views/recursos/Y-7.png"
+        },
+        {
+          "color": "B",
+          "tipo": "3",
+          "urlImagen": "/views/recursos/B-3.png"
+        }
+      ]
+    },
+    "puntaje": 0
   }
 ]

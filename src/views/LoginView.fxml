@@ -74,7 +74,7 @@
             <VBox.margin>
                 <Insets/>
             </VBox.margin>
-    </Label>
+        </Label>
         <Label fx:id="textoBienvenida1" textFill="WHITE">
             <padding>
                 <Insets bottom="10.0"/>

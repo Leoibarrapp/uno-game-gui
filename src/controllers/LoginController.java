@@ -3,12 +3,8 @@ package controllers;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,7 +12,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -27,7 +22,6 @@ import models.game.*;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Objects;
 
 import static controllers.GameController.guardarUsuario;
@@ -96,7 +90,7 @@ public class LoginController {
 
             delay(event -> {
                 mostrarBarraDeCarga();
-            }, 1);
+            }, 0.5);
 
             delay(event -> {
                 try {
@@ -104,7 +98,7 @@ public class LoginController {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-            }, 6);
+            }, 2.5);
         } else {
             textoBienvenida1.setTextFill(Color.YELLOW);
             textoBienvenida1.setText("La partida que está intentando cargar ya ha concluido.");
@@ -137,7 +131,7 @@ public class LoginController {
 
         delay(event -> {
             mostrarBarraDeCarga();
-        }, 1);
+        }, 0.5);
 
         delay(event -> {
             try {
@@ -145,7 +139,7 @@ public class LoginController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }, 6);
+        }, 2.5);
 
     }
 
@@ -167,7 +161,7 @@ public class LoginController {
             stage.setTitle("uno-game");
             stage.getIcons().add(icon);
             stage.setScene(new Scene(root));
-            //stage.setFullScreen(true);
+            stage.setFullScreen(true);
 
             ((Stage) btnPartidaNueva.getScene().getWindow()).close();
 
@@ -181,11 +175,11 @@ public class LoginController {
     private void mostrarBarraDeCarga() {
         barraProgreso.setVisible(true);
 
-        delay(event -> barraProgreso.setProgress(0.2), 2);
-        delay(event -> barraProgreso.setProgress(0.4), 2.5);
-        delay(event -> barraProgreso.setProgress(0.6), 3);
-        delay(event -> barraProgreso.setProgress(0.8), 3.5);
-        delay(event -> barraProgreso.setProgress(1.0), 4);
+        delay(event -> barraProgreso.setProgress(0.2), 1);
+        delay(event -> barraProgreso.setProgress(0.4), 1.2);
+        delay(event -> barraProgreso.setProgress(0.6), 1.4);
+        delay(event -> barraProgreso.setProgress(0.8), 1.6);
+        delay(event -> barraProgreso.setProgress(1.0), 1.8);
     }
 
     public void onBtnSalirClick() {
@@ -223,24 +217,20 @@ public class LoginController {
             }.getType();
             usuarios = gson.fromJson(reader, listType);
         } catch (FileNotFoundException e) {
-            // Manejar el caso donde el archivo no se encuentra (puede estar vacío al principio)
-            System.out.println("Archivo de usuarios no encontrado. Se creará uno nuevo al guardar.");
+            e.printStackTrace();
         } catch (IOException e) {
-            // Manejar otras posibles IOExcepciones
-            System.out.println("Error al leer el archivo de usuarios: " + e.getMessage());
+            e.printStackTrace();
         }
 
-        // Si usuarios es null, inicializar como una lista vacía
         if (usuarios == null) {
             usuarios = new ArrayList<>();
         }
 
-        // Actualizar los puntos de los jugadores en el juego basado en la lista de usuarios
         for (Jugador jugador : juego.getJugadores()) {
             for (Jugador jArchivo : usuarios) {
                 if (Objects.equals(jugador.getNombre(), jArchivo.getNombre())) {
                     jugador.setPuntaje(jArchivo.getPuntaje());
-                    break; // Rompe el bucle interno una vez que se encuentra el jugador
+                    break;
                 }
             }
         }

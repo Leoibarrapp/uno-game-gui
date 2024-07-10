@@ -4,18 +4,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatisticsController">
-    <Button fx:id="btnSalir" layoutX="29.0" layoutY="43.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="79.0" text="Volver" />
-    <TableView fx:id="estadisticasTabla" layoutX="137.0" layoutY="100.0" prefHeight="272.0" prefWidth="306.0">
-      <columns>
-          <TableColumn fx:id="colJugador" prefWidth="178.0" text="Jugador" />
-          <TableColumn fx:id="colPuntaje" prefWidth="127.0" text="Puntaje" />
-      </columns>
+<AnchorPane prefHeight="432.0" prefWidth="600.0" style="-fx-background-color: #2E69C7;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatisticsController">
+    <Button fx:id="btnVolver" layoutX="26.0" layoutY="34.0" mnemonicParsing="false" onAction="#onBtnVolverClick" prefHeight="42.0" prefWidth="79.0" text="Volver" />
+    <TableView fx:id="estadisticasTabla" layoutX="147.0" layoutY="100.0" prefHeight="272.0" prefWidth="306.0">
+        <columns>
+            <TableColumn fx:id="colJugador" prefWidth="178.0" text="Jugador" />
+            <TableColumn fx:id="colPuntaje" prefWidth="127.0" text="Puntaje" />
+        </columns>
     </TableView>
-    <Text fx:id="estadisticasTxt" layoutX="215.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estadisticas">
+    <Text fx:id="estadisticasTxt" fill="WHITE" layoutX="225.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estadisticas">
         <font>
-          <Font size="30.0" />
+            <Font size="30.0" />
         </font>
     </Text>
-   <Button fx:id="BtnCargar" layoutX="36.0" layoutY="134.0" mnemonicParsing="false" text="Cargar" />
 </AnchorPane>

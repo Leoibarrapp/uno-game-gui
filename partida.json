@@ -2,149 +2,9 @@
   "mazoJuego": {
     "mazo": [
       {
-        "color": "R",
-        "tipo": "1",
-        "urlImagen": "/views/recursos/R-1.png"
-      },
-      {
-        "color": "R",
-        "tipo": "5",
-        "urlImagen": "/views/recursos/R-5.png"
-      },
-      {
-        "color": "R",
+        "color": "G",
         "tipo": "8",
-        "urlImagen": "/views/recursos/R-8.png"
-      },
-      {
-        "color": "R",
-        "tipo": "9",
-        "urlImagen": "/views/recursos/R-9.png"
-      },
-      {
-        "color": "R",
-        "tipo": "9",
-        "urlImagen": "/views/recursos/R-9.png"
-      },
-      {
-        "color": "W",
-        "tipo": "CC",
-        "urlImagen": "/views/recursos/W-CC.png"
-      },
-      {
-        "color": "G",
-        "tipo": "0",
-        "urlImagen": "/views/recursos/G-0.png"
-      },
-      {
-        "color": "G",
-        "tipo": "T2",
-        "urlImagen": "/views/recursos/G-T2.png"
-      },
-      {
-        "color": "G",
-        "tipo": "S",
-        "urlImagen": "/views/recursos/G-S.png"
-      },
-      {
-        "color": "R",
-        "tipo": "S",
-        "urlImagen": "/views/recursos/R-S.png"
-      },
-      {
-        "color": "W",
-        "tipo": "T4",
-        "urlImagen": "/views/recursos/W-T4.png"
-      },
-      {
-        "color": "B",
-        "tipo": "4",
-        "urlImagen": "/views/recursos/B-4.png"
-      },
-      {
-        "color": "B",
-        "tipo": "5",
-        "urlImagen": "/views/recursos/B-5.png"
-      },
-      {
-        "color": "B",
-        "tipo": "1",
-        "urlImagen": "/views/recursos/B-1.png"
-      },
-      {
-        "color": "B",
-        "tipo": "T2",
-        "urlImagen": "/views/recursos/B-T2.png"
-      },
-      {
-        "color": "B",
-        "tipo": "6",
-        "urlImagen": "/views/recursos/B-6.png"
-      },
-      {
-        "color": "B",
-        "tipo": "0",
-        "urlImagen": "/views/recursos/B-0.png"
-      },
-      {
-        "color": "B",
-        "tipo": "R",
-        "urlImagen": "/views/recursos/B-R.png"
-      },
-      {
-        "color": "B",
-        "tipo": "5",
-        "urlImagen": "/views/recursos/B-5.png"
-      },
-      {
-        "color": "R",
-        "tipo": "5",
-        "urlImagen": "/views/recursos/R-5.png"
-      },
-      {
-        "color": "R",
-        "tipo": "2",
-        "urlImagen": "/views/recursos/R-2.png"
-      },
-      {
-        "color": "R",
-        "tipo": "6",
-        "urlImagen": "/views/recursos/R-6.png"
-      },
-      {
-        "color": "R",
-        "tipo": "6",
-        "urlImagen": "/views/recursos/R-6.png"
-      },
-      {
-        "color": "R",
-        "tipo": "4",
-        "urlImagen": "/views/recursos/R-4.png"
-      },
-      {
-        "color": "W",
-        "tipo": "CC",
-        "urlImagen": "/views/recursos/W-CC.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "0",
-        "urlImagen": "/views/recursos/Y-0.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "9",
-        "urlImagen": "/views/recursos/Y-9.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "R",
-        "urlImagen": "/views/recursos/Y-R.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "1",
-        "urlImagen": "/views/recursos/Y-1.png"
+        "urlImagen": "/views/recursos/G-8.png"
       }
     ]
   },
@@ -152,228 +12,8 @@
     "mazo": [
       {
         "color": "R",
-        "tipo": "4",
-        "urlImagen": "/views/recursos/R-4.png"
-      },
-      {
-        "color": "G",
-        "tipo": "T2",
-        "urlImagen": "/views/recursos/G-T2.png"
-      },
-      {
-        "color": "B",
-        "tipo": "R",
-        "urlImagen": "/views/recursos/B-R.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "7",
-        "urlImagen": "/views/recursos/Y-7.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "6",
-        "urlImagen": "/views/recursos/Y-6.png"
-      },
-      {
-        "color": "G",
         "tipo": "9",
-        "urlImagen": "/views/recursos/G-9.png"
-      },
-      {
-        "color": "G",
-        "tipo": "6",
-        "urlImagen": "/views/recursos/G-6.png"
-      },
-      {
-        "color": "G",
-        "tipo": "2",
-        "urlImagen": "/views/recursos/G-2.png"
-      },
-      {
-        "color": "R",
-        "tipo": "T2",
-        "urlImagen": "/views/recursos/R-T2.png"
-      },
-      {
-        "color": "B",
-        "tipo": "4",
-        "urlImagen": "/views/recursos/B-4.png"
-      },
-      {
-        "color": "B",
-        "tipo": "3",
-        "urlImagen": "/views/recursos/B-3.png"
-      },
-      {
-        "color": "G",
-        "tipo": "2",
-        "urlImagen": "/views/recursos/G-2.png"
-      },
-      {
-        "color": "W",
-        "tipo": "T4",
-        "urlImagen": "/views/recursos/W-T4.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "6",
-        "urlImagen": "/views/recursos/Y-6.png"
-      },
-      {
-        "color": "B",
-        "tipo": "7",
-        "urlImagen": "/views/recursos/B-7.png"
-      },
-      {
-        "color": "R",
-        "tipo": "6",
-        "urlImagen": "/views/recursos/R-6.png"
-      },
-      {
-        "color": "B",
-        "tipo": "8",
-        "urlImagen": "/views/recursos/B-8.png"
-      },
-      {
-        "color": "B",
-        "tipo": "S",
-        "urlImagen": "/views/recursos/B-S.png"
-      },
-      {
-        "color": "R",
-        "tipo": "R",
-        "urlImagen": "/views/recursos/R-R.png"
-      },
-      {
-        "color": "G",
-        "tipo": "8",
-        "urlImagen": "/views/recursos/G-8.png"
-      },
-      {
-        "color": "W",
-        "tipo": "CC",
-        "urlImagen": "/views/recursos/W-CC.png"
-      },
-      {
-        "color": "G",
-        "tipo": "7",
-        "urlImagen": "/views/recursos/G-7.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "7",
-        "urlImagen": "/views/recursos/Y-7.png"
-      },
-      {
-        "color": "B",
-        "tipo": "1",
-        "urlImagen": "/views/recursos/B-1.png"
-      },
-      {
-        "color": "R",
-        "tipo": "3",
-        "urlImagen": "/views/recursos/R-3.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "5",
-        "urlImagen": "/views/recursos/Y-5.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "9",
-        "urlImagen": "/views/recursos/Y-9.png"
-      },
-      {
-        "color": "G",
-        "tipo": "R",
-        "urlImagen": "/views/recursos/G-R.png"
-      },
-      {
-        "color": "B",
-        "tipo": "9",
-        "urlImagen": "/views/recursos/B-9.png"
-      },
-      {
-        "color": "G",
-        "tipo": "7",
-        "urlImagen": "/views/recursos/G-7.png"
-      },
-      {
-        "color": "R",
-        "tipo": "S",
-        "urlImagen": "/views/recursos/R-S.png"
-      },
-      {
-        "color": "G",
-        "tipo": "R",
-        "urlImagen": "/views/recursos/G-R.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "T2",
-        "urlImagen": "/views/recursos/Y-T2.png"
-      },
-      {
-        "color": "R",
-        "tipo": "0",
-        "urlImagen": "/views/recursos/R-0.png"
-      },
-      {
-        "color": "B",
-        "tipo": "6",
-        "urlImagen": "/views/recursos/B-6.png"
-      },
-      {
-        "color": "G",
-        "tipo": "4",
-        "urlImagen": "/views/recursos/G-4.png"
-      },
-      {
-        "color": "R",
-        "tipo": "R",
-        "urlImagen": "/views/recursos/R-R.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "5",
-        "urlImagen": "/views/recursos/Y-5.png"
-      },
-      {
-        "color": "W",
-        "tipo": "CC",
-        "urlImagen": "/views/recursos/W-CC.png"
-      },
-      {
-        "color": "R",
-        "tipo": "2",
-        "urlImagen": "/views/recursos/R-2.png"
-      },
-      {
-        "color": "R",
-        "tipo": "7",
-        "urlImagen": "/views/recursos/R-7.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "8",
-        "urlImagen": "/views/recursos/Y-8.png"
-      },
-      {
-        "color": "B",
-        "tipo": "S",
-        "urlImagen": "/views/recursos/B-S.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "2",
-        "urlImagen": "/views/recursos/Y-2.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "3",
-        "urlImagen": "/views/recursos/Y-3.png"
+        "urlImagen": "/views/recursos/R-9.png"
       },
       {
         "color": "Y",
@@ -387,43 +27,48 @@
       },
       {
         "color": "B",
-        "tipo": "8",
-        "urlImagen": "/views/recursos/B-8.png"
+        "tipo": "6",
+        "urlImagen": "/views/recursos/B-6.png"
       },
       {
         "color": "G",
-        "tipo": "1",
-        "urlImagen": "/views/recursos/G-1.png"
+        "tipo": "0",
+        "urlImagen": "/views/recursos/G-0.png"
+      },
+      {
+        "color": "R",
+        "tipo": "2",
+        "urlImagen": "/views/recursos/R-2.png"
       },
       {
         "color": "G",
-        "tipo": "4",
-        "urlImagen": "/views/recursos/G-4.png"
-      },
-      {
-        "color": "G",
-        "tipo": "3",
-        "urlImagen": "/views/recursos/G-3.png"
+        "tipo": "R",
+        "urlImagen": "/views/recursos/G-R.png"
       },
       {
         "color": "Y",
-        "tipo": "3",
-        "urlImagen": "/views/recursos/Y-3.png"
-      },
-      {
-        "color": "G",
-        "tipo": "5",
-        "urlImagen": "/views/recursos/G-5.png"
-      },
-      {
-        "color": "Y",
-        "tipo": "1",
-        "urlImagen": "/views/recursos/Y-1.png"
+        "tipo": "T2",
+        "urlImagen": "/views/recursos/Y-T2.png"
       },
       {
         "color": "B",
-        "tipo": "3",
-        "urlImagen": "/views/recursos/B-3.png"
+        "tipo": "9",
+        "urlImagen": "/views/recursos/B-9.png"
+      },
+      {
+        "color": "W",
+        "tipo": "CC",
+        "urlImagen": "/views/recursos/W-CC.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "8",
+        "urlImagen": "/views/recursos/Y-8.png"
+      },
+      {
+        "color": "R",
+        "tipo": "4",
+        "urlImagen": "/views/recursos/R-4.png"
       },
       {
         "color": "W",
@@ -432,8 +77,53 @@
       },
       {
         "color": "G",
-        "tipo": "5",
-        "urlImagen": "/views/recursos/G-5.png"
+        "tipo": "T2",
+        "urlImagen": "/views/recursos/G-T2.png"
+      },
+      {
+        "color": "G",
+        "tipo": "S",
+        "urlImagen": "/views/recursos/G-S.png"
+      },
+      {
+        "color": "W",
+        "tipo": "T4",
+        "urlImagen": "/views/recursos/W-T4.png"
+      },
+      {
+        "color": "G",
+        "tipo": "1",
+        "urlImagen": "/views/recursos/G-1.png"
+      },
+      {
+        "color": "G",
+        "tipo": "S",
+        "urlImagen": "/views/recursos/G-S.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "0",
+        "urlImagen": "/views/recursos/Y-0.png"
+      },
+      {
+        "color": "B",
+        "tipo": "4",
+        "urlImagen": "/views/recursos/B-4.png"
+      },
+      {
+        "color": "B",
+        "tipo": "2",
+        "urlImagen": "/views/recursos/B-2.png"
+      },
+      {
+        "color": "B",
+        "tipo": "R",
+        "urlImagen": "/views/recursos/B-R.png"
+      },
+      {
+        "color": "B",
+        "tipo": "8",
+        "urlImagen": "/views/recursos/B-8.png"
       },
       {
         "color": "B",
@@ -441,9 +131,139 @@
         "urlImagen": "/views/recursos/B-T2.png"
       },
       {
-        "color": "R",
+        "color": "B",
+        "tipo": "3",
+        "urlImagen": "/views/recursos/B-3.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "4",
+        "urlImagen": "/views/recursos/Y-4.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "3",
+        "urlImagen": "/views/recursos/Y-3.png"
+      },
+      {
+        "color": "W",
+        "tipo": "T4",
+        "urlImagen": "/views/recursos/W-T4.png"
+      },
+      {
+        "color": "Y",
         "tipo": "7",
-        "urlImagen": "/views/recursos/R-7.png"
+        "urlImagen": "/views/recursos/Y-7.png"
+      },
+      {
+        "color": "R",
+        "tipo": "T2",
+        "urlImagen": "/views/recursos/R-T2.png"
+      },
+      {
+        "color": "B",
+        "tipo": "2",
+        "urlImagen": "/views/recursos/B-2.png"
+      },
+      {
+        "color": "B",
+        "tipo": "R",
+        "urlImagen": "/views/recursos/B-R.png"
+      },
+      {
+        "color": "B",
+        "tipo": "S",
+        "urlImagen": "/views/recursos/B-S.png"
+      },
+      {
+        "color": "G",
+        "tipo": "3",
+        "urlImagen": "/views/recursos/G-3.png"
+      },
+      {
+        "color": "G",
+        "tipo": "8",
+        "urlImagen": "/views/recursos/G-8.png"
+      },
+      {
+        "color": "B",
+        "tipo": "9",
+        "urlImagen": "/views/recursos/B-9.png"
+      },
+      {
+        "color": "G",
+        "tipo": "3",
+        "urlImagen": "/views/recursos/G-3.png"
+      },
+      {
+        "color": "B",
+        "tipo": "5",
+        "urlImagen": "/views/recursos/B-5.png"
+      },
+      {
+        "color": "G",
+        "tipo": "R",
+        "urlImagen": "/views/recursos/G-R.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "1",
+        "urlImagen": "/views/recursos/Y-1.png"
+      },
+      {
+        "color": "G",
+        "tipo": "2",
+        "urlImagen": "/views/recursos/G-2.png"
+      },
+      {
+        "color": "R",
+        "tipo": "S",
+        "urlImagen": "/views/recursos/R-S.png"
+      },
+      {
+        "color": "R",
+        "tipo": "0",
+        "urlImagen": "/views/recursos/R-0.png"
+      },
+      {
+        "color": "G",
+        "tipo": "9",
+        "urlImagen": "/views/recursos/G-9.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "6",
+        "urlImagen": "/views/recursos/Y-6.png"
+      },
+      {
+        "color": "B",
+        "tipo": "8",
+        "urlImagen": "/views/recursos/B-8.png"
+      },
+      {
+        "color": "W",
+        "tipo": "T4",
+        "urlImagen": "/views/recursos/W-T4.png"
+      },
+      {
+        "color": "R",
+        "tipo": "R",
+        "urlImagen": "/views/recursos/R-R.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "8",
+        "urlImagen": "/views/recursos/Y-8.png"
+      },
+      {
+        "color": "R",
+        "tipo": "4",
+        "urlImagen": "/views/recursos/R-4.png"
+      },
+      {
+        "color": "G",
+        "tipo": "6",
+        "urlImagen": "/views/recursos/G-6.png"
       },
       {
         "color": "B",
@@ -452,33 +272,13 @@
       },
       {
         "color": "Y",
-        "tipo": "2",
-        "urlImagen": "/views/recursos/Y-2.png"
-      },
-      {
-        "color": "R",
-        "tipo": "1",
-        "urlImagen": "/views/recursos/R-1.png"
-      },
-      {
-        "color": "W",
-        "tipo": "T4",
-        "urlImagen": "/views/recursos/W-T4.png"
-      },
-      {
-        "color": "G",
-        "tipo": "1",
-        "urlImagen": "/views/recursos/G-1.png"
-      },
-      {
-        "color": "R",
-        "tipo": "T2",
-        "urlImagen": "/views/recursos/R-T2.png"
+        "tipo": "9",
+        "urlImagen": "/views/recursos/Y-9.png"
       },
       {
         "color": "Y",
-        "tipo": "4",
-        "urlImagen": "/views/recursos/Y-4.png"
+        "tipo": "R",
+        "urlImagen": "/views/recursos/Y-R.png"
       },
       {
         "color": "R",
@@ -487,40 +287,235 @@
       },
       {
         "color": "G",
+        "tipo": "6",
+        "urlImagen": "/views/recursos/G-6.png"
+      },
+      {
+        "color": "B",
+        "tipo": "1",
+        "urlImagen": "/views/recursos/B-1.png"
+      },
+      {
+        "color": "B",
+        "tipo": "4",
+        "urlImagen": "/views/recursos/B-4.png"
+      },
+      {
+        "color": "G",
+        "tipo": "1",
+        "urlImagen": "/views/recursos/G-1.png"
+      },
+      {
+        "color": "R",
+        "tipo": "8",
+        "urlImagen": "/views/recursos/R-8.png"
+      },
+      {
+        "color": "G",
+        "tipo": "T2",
+        "urlImagen": "/views/recursos/G-T2.png"
+      },
+      {
+        "color": "R",
+        "tipo": "6",
+        "urlImagen": "/views/recursos/R-6.png"
+      },
+      {
+        "color": "R",
+        "tipo": "9",
+        "urlImagen": "/views/recursos/R-9.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "2",
+        "urlImagen": "/views/recursos/Y-2.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "R",
+        "urlImagen": "/views/recursos/Y-R.png"
+      },
+      {
+        "color": "R",
+        "tipo": "7",
+        "urlImagen": "/views/recursos/R-7.png"
+      },
+      {
+        "color": "R",
+        "tipo": "R",
+        "urlImagen": "/views/recursos/R-R.png"
+      },
+      {
+        "color": "G",
+        "tipo": "2",
+        "urlImagen": "/views/recursos/G-2.png"
+      },
+      {
+        "color": "R",
+        "tipo": "2",
+        "urlImagen": "/views/recursos/R-2.png"
+      },
+      {
+        "color": "R",
+        "tipo": "5",
+        "urlImagen": "/views/recursos/R-5.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "S",
+        "urlImagen": "/views/recursos/Y-S.png"
+      },
+      {
+        "color": "W",
+        "tipo": "CC",
+        "urlImagen": "/views/recursos/W-CC.png"
+      },
+      {
+        "color": "G",
+        "tipo": "7",
+        "urlImagen": "/views/recursos/G-7.png"
+      },
+      {
+        "color": "R",
+        "tipo": "1",
+        "urlImagen": "/views/recursos/R-1.png"
+      },
+      {
+        "color": "R",
+        "tipo": "7",
+        "urlImagen": "/views/recursos/R-7.png"
+      },
+      {
+        "color": "R",
+        "tipo": "6",
+        "urlImagen": "/views/recursos/R-6.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "5",
+        "urlImagen": "/views/recursos/Y-5.png"
+      },
+      {
+        "color": "G",
+        "tipo": "5",
+        "urlImagen": "/views/recursos/G-5.png"
+      },
+      {
+        "color": "G",
         "tipo": "9",
         "urlImagen": "/views/recursos/G-9.png"
+      },
+      {
+        "color": "B",
+        "tipo": "7",
+        "urlImagen": "/views/recursos/B-7.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "5",
+        "urlImagen": "/views/recursos/Y-5.png"
+      },
+      {
+        "color": "B",
+        "tipo": "T2",
+        "urlImagen": "/views/recursos/B-T2.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "6",
+        "urlImagen": "/views/recursos/Y-6.png"
+      },
+      {
+        "color": "R",
+        "tipo": "5",
+        "urlImagen": "/views/recursos/R-5.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "2",
+        "urlImagen": "/views/recursos/Y-2.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "4",
+        "urlImagen": "/views/recursos/Y-4.png"
+      },
+      {
+        "color": "G",
+        "tipo": "5",
+        "urlImagen": "/views/recursos/G-5.png"
+      },
+      {
+        "color": "B",
+        "tipo": "6",
+        "urlImagen": "/views/recursos/B-6.png"
+      },
+      {
+        "color": "B",
+        "tipo": "1",
+        "urlImagen": "/views/recursos/B-1.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "9",
+        "urlImagen": "/views/recursos/Y-9.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "3",
+        "urlImagen": "/views/recursos/Y-3.png"
+      },
+      {
+        "color": "R",
+        "tipo": "1",
+        "urlImagen": "/views/recursos/R-1.png"
+      },
+      {
+        "color": "Y",
+        "tipo": "1",
+        "urlImagen": "/views/recursos/Y-1.png"
       }
     ]
   },
   "jugadores": [
     {
-      "nombre": "Pepe",
+      "nombre": "",
       "cartas": {
         "mazo": [
           {
-            "color": "B",
-            "tipo": "2",
-            "urlImagen": "/views/recursos/B-2.png"
+            "color": "G",
+            "tipo": "4",
+            "urlImagen": "/views/recursos/G-4.png"
+          },
+          {
+            "color": "W",
+            "tipo": "CC",
+            "urlImagen": "/views/recursos/W-CC.png"
           },
           {
             "color": "G",
-            "tipo": "S",
-            "urlImagen": "/views/recursos/G-S.png"
-          },
-          {
-            "color": "G",
-            "tipo": "8",
-            "urlImagen": "/views/recursos/G-8.png"
-          },
-          {
-            "color": "B",
-            "tipo": "2",
-            "urlImagen": "/views/recursos/B-2.png"
+            "tipo": "4",
+            "urlImagen": "/views/recursos/G-4.png"
           },
           {
             "color": "Y",
-            "tipo": "4",
-            "urlImagen": "/views/recursos/Y-4.png"
+            "tipo": "T2",
+            "urlImagen": "/views/recursos/Y-T2.png"
+          },
+          {
+            "color": "R",
+            "tipo": "T2",
+            "urlImagen": "/views/recursos/R-T2.png"
+          },
+          {
+            "color": "Y",
+            "tipo": "7",
+            "urlImagen": "/views/recursos/Y-7.png"
+          },
+          {
+            "color": "B",
+            "tipo": "3",
+            "urlImagen": "/views/recursos/B-3.png"
           }
         ]
       },
@@ -531,39 +526,39 @@
       "cartas": {
         "mazo": [
           {
-            "color": "Y",
-            "tipo": "T2",
-            "urlImagen": "/views/recursos/Y-T2.png"
+            "color": "W",
+            "tipo": "CC",
+            "urlImagen": "/views/recursos/W-CC.png"
           },
           {
-            "color": "G",
-            "tipo": "6",
-            "urlImagen": "/views/recursos/G-6.png"
+            "color": "R",
+            "tipo": "S",
+            "urlImagen": "/views/recursos/R-S.png"
           },
           {
             "color": "B",
-            "tipo": "9",
-            "urlImagen": "/views/recursos/B-9.png"
+            "tipo": "0",
+            "urlImagen": "/views/recursos/B-0.png"
           },
           {
-            "color": "Y",
-            "tipo": "8",
-            "urlImagen": "/views/recursos/Y-8.png"
+            "color": "B",
+            "tipo": "5",
+            "urlImagen": "/views/recursos/B-5.png"
           },
           {
-            "color": "Y",
-            "tipo": "R",
-            "urlImagen": "/views/recursos/Y-R.png"
+            "color": "B",
+            "tipo": "S",
+            "urlImagen": "/views/recursos/B-S.png"
+          },
+          {
+            "color": "R",
+            "tipo": "3",
+            "urlImagen": "/views/recursos/R-3.png"
           },
           {
             "color": "G",
-            "tipo": "3",
-            "urlImagen": "/views/recursos/G-3.png"
-          },
-          {
-            "color": "Y",
-            "tipo": "S",
-            "urlImagen": "/views/recursos/Y-S.png"
+            "tipo": "7",
+            "urlImagen": "/views/recursos/G-7.png"
           }
         ]
       },
@@ -571,5 +566,5 @@
     }
   ],
   "turno": 0,
-  "colorActual": "R"
+  "colorActual": "G"
 }
