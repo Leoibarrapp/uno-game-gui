@@ -42,11 +42,13 @@ public class StatisticsController {
     @FXML
     public void initialize() {
        estadisticas = FXCollections.observableArrayList();
+
        this.colJugador.setCellValueFactory(new PropertyValueFactory<>("nombre"));
        this.colPuntaje.setCellValueFactory(new PropertyValueFactory<>("puntaje"));
 
         ArrayList<Jugador> usuarios = cargarEstadisticas();
 
+        System.out.println(usuarios);
 
         setEstadisticasTabla(usuarios);
 
@@ -54,15 +56,12 @@ public class StatisticsController {
     @FXML
     public void setEstadisticasTabla(ArrayList<Jugador> usuarios) {
 
-        for (int i = 0; i < usuarios.size(); i++) {
-
-            this.estadisticas.add(usuarios.get(i));
-             this.estadisticasTabla.setItems(estadisticas);
-         }
+        estadisticas.setAll(usuarios);
+        estadisticasTabla.setItems(estadisticas);
 
     }
     @FXML
-    public ArrayList cargarEstadisticas() {
+    public ArrayList<Jugador> cargarEstadisticas() {
         ArrayList<Jugador> usuarios = new ArrayList<>();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

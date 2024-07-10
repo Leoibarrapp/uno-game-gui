@@ -204,10 +204,10 @@ public class GameController {
                     textoEnJuegoAbajo.setText(puntos + " puntos");
                     textoEnJuegoAbajo.setFont(customFont80);
 
-                    puntos += jugador.getPuntos();
+                    puntos += jugador.getPuntaje();
 
                     juego.setGanador(jugador);
-                    jugador.setPuntos(puntos);
+                    jugador.setPuntaje(puntos);
 
                     return;
                 }
@@ -293,10 +293,10 @@ public class GameController {
                     textoEnJuegoAbajo.setText(puntos + " puntos");
                     textoEnJuegoAbajo.setFont(customFont80);
 
-                    puntos += cpu.getPuntos();
+                    puntos += cpu.getPuntaje();
 
                     juego.setGanador(cpu);
-                    cpu.setPuntos(puntos);
+                    cpu.setPuntaje(puntos);
 
                     return;
                 }

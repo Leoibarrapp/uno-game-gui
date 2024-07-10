@@ -154,8 +154,8 @@ public class LoginController {
         cargarUsuarios();
         guardarUsuario(juego.getJugadores().getFirst());
 
-        System.out.println(juego.getJugadores().getFirst().getPuntos());
-        System.out.println(juego.getJugadores().getLast().getPuntos());
+        System.out.println(juego.getJugadores().getFirst().getPuntaje());
+        System.out.println(juego.getJugadores().getLast().getPuntaje());
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));
@@ -239,7 +239,7 @@ public class LoginController {
         for (Jugador jugador : juego.getJugadores()) {
             for (Jugador jArchivo : usuarios) {
                 if (Objects.equals(jugador.getNombre(), jArchivo.getNombre())) {
-                    jugador.setPuntos(jArchivo.getPuntos());
+                    jugador.setPuntaje(jArchivo.getPuntaje());
                     break; // Rompe el bucle interno una vez que se encuentra el jugador
                 }
             }

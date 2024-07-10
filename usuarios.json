@@ -43,7 +43,7 @@
     "puntaje": 0
   },
   {
-    "nombre": "",
+    "nombre": "leo",
     "cartas": {
       "mazo": [
         {
@@ -78,7 +78,7 @@
         }
       ]
     },
-    "puntaje": 0
+    "puntaje": 100
   },
   {
     "nombre": "Pepe",
