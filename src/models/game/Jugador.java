@@ -5,10 +5,16 @@ import java.util.Objects;
 public class Jugador{
     private String nombre;
     private Mazo cartas;
-    private int puntaje;
+    private int puntajeTotal;
+    private int partidasGanadas;
+    private double puntajePromedio;
+
 
     public Jugador(String nombre) {
         this.nombre = nombre;
+        this.puntajeTotal = 0;
+        this.partidasGanadas = 0;
+        this.puntajePromedio = 0;
     }
 
 //    public Jugador() {
@@ -186,11 +192,40 @@ public class Jugador{
             return s + "\u001B[0m";
         }}
 
-    public int getPuntaje() {
-        return puntaje;
+    public int getPuntajeTotal() {
+        return puntajeTotal;
     }
 
-    public void setPuntaje(int puntaje) {
-        this.puntaje = puntaje;
+    public void setPuntajeTotal(int puntajeTotal) {
+        this.puntajeTotal = puntajeTotal;
+    }
+
+    public int getPartidasGanadas() {
+        return partidasGanadas;
+    }
+
+    public void setPartidasGanadas(int cant){
+        this.partidasGanadas = cant;
+    }
+
+    public void actualizarPuntajePromedio() {
+        double promedio = 0;
+
+        if(partidasGanadas != 0){
+            promedio = ((double) puntajeTotal )/partidasGanadas;
+        }
+        else{
+            promedio = 0;
+        }
+
+        this.puntajePromedio = promedio;
+    }
+
+    public double getPuntajePromedio() {
+        return puntajePromedio;
+    }
+
+    public void setPuntajePromedio(double puntajePromedio) {
+        this.puntajePromedio = puntajePromedio;
     }
 }

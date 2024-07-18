@@ -5,10 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -21,20 +19,15 @@ import javafx.stage.Stage;
 import models.UnoGame;
 import models.game.Jugador;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.AbstractList;
 import java.util.ArrayList;
 
-import static models.UnoGame.customFont20;
-import static models.UnoGame.customFont30;
+import static models.UnoGame.*;
 
 public class StatisticsController {
-    @FXML
-    public Button btnCargar;
+
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     @FXML
     private Button btnVolver;
@@ -43,11 +36,15 @@ public class StatisticsController {
     @FXML
     private Text estadisticasTxt;
     @FXML
+    private ObservableList<Jugador> estadisticas;
+    @FXML
     private TableColumn colJugador;
     @FXML
     private TableColumn colPuntaje;
     @FXML
-    private ObservableList<Jugador> estadisticas;
+    private TableColumn colPartidasGanadas;
+    @FXML
+    public TableColumn colPuntajePromedio;
 
     @FXML
     public void initialize() {
@@ -59,7 +56,9 @@ public class StatisticsController {
         estadisticas = FXCollections.observableArrayList();
 
         this.colJugador.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        this.colPuntaje.setCellValueFactory(new PropertyValueFactory<>("puntaje"));
+        this.colPuntaje.setCellValueFactory(new PropertyValueFactory<>("puntajeTotal"));
+        this.colPartidasGanadas.setCellValueFactory(new PropertyValueFactory<>("partidasGanadas"));
+        this.colPuntajePromedio.setCellValueFactory(new PropertyValueFactory<>("puntajePromedio"));
 
         ArrayList<Jugador> usuarios = cargarEstadisticas();
 

@@ -148,8 +148,8 @@ public class LoginController {
         cargarUsuarios();
         guardarUsuario(juego.getJugadores().getFirst());
 
-        System.out.println(juego.getJugadores().getFirst().getPuntaje());
-        System.out.println(juego.getJugadores().getLast().getPuntaje());
+        System.out.println(juego.getJugadores().getFirst().getPuntajeTotal());
+        System.out.println(juego.getJugadores().getLast().getPuntajeTotal());
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/GameView.fxml"));
@@ -161,7 +161,7 @@ public class LoginController {
             stage.setTitle("uno-game");
             stage.getIcons().add(icon);
             stage.setScene(new Scene(root));
-            stage.setFullScreen(true);
+            //stage.setFullScreen(true);
 
             ((Stage) btnPartidaNueva.getScene().getWindow()).close();
 
@@ -191,16 +191,7 @@ public class LoginController {
 
         try {
             FileReader reader = new FileReader("partida.json");
-            //juego = new Juego();
             juego = gson.fromJson(reader, Juego.class);
-
-//            ArrayList<Jugador> jugadores = (ArrayList<Jugador>) juego.getJugadores();
-//            Mazo baraja = (Mazo) juego.getMazoPila();
-//            Mazo pila = (Mazo) juego.getMazoJuego();
-//
-//            Jugador jugador = jugadores.getFirst();
-//            Jugador cpu = jugadores.getLast();
-
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -229,7 +220,9 @@ public class LoginController {
         for (Jugador jugador : juego.getJugadores()) {
             for (Jugador jArchivo : usuarios) {
                 if (Objects.equals(jugador.getNombre(), jArchivo.getNombre())) {
-                    jugador.setPuntaje(jArchivo.getPuntaje());
+                    jugador.setPuntajeTotal(jArchivo.getPuntajeTotal());
+                    jugador.setPartidasGanadas(jArchivo.getPartidasGanadas());
+                    jugador.setPuntajePromedio(jArchivo.getPuntajePromedio());
                     break;
                 }
             }

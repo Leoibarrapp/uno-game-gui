@@ -1,13 +1,12 @@
 package controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import static controllers.LoginController.juego;
-import static models.UnoGame.customFont30;
+import static models.UnoGame.*;
 
 public class ChooseColorController {
     public Label textoSeleccionaColor;

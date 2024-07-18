@@ -139,9 +139,9 @@ public class GameController {
 
                     ventanaModalEscogerColor();
                     textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
-
                     textoEnJuegoAbajo.setText("¡Repites turno!");
-                    cantarUno();
+
+                    cantarUnoYRepetir();
                     return;
                 case "T2":
                     cpu.agarrarCarta(juego);
@@ -151,15 +151,17 @@ public class GameController {
                     contenedorC.agregarBoton(contenedorC.crearBoton());
 
                     textoEnJuegoAbajo.setText("¡Repites turno!");
-                    cantarUno();
+                    cantarUnoYRepetir();
                     return;
                 case "S", "R":
                     textoEnJuegoAbajo.setText("¡Repites turno!");
-                    cantarUno();
+                    cantarUnoYRepetir();
                     return;
                 case "CC":
                     ventanaModalEscogerColor();
                     textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
+                    cantarUno();
+                    return;
                 default:
                     if(jugador.getCartas().getMazo().size() == 1){
                         btnCantarUno.setVisible(true);
@@ -180,10 +182,12 @@ public class GameController {
                         }, 2);
 
                         delay(event -> { btnCantarUno.setVisible(false); }, 2 );
+                        delay(event -> { jugadaCPU(); }, 2);
                         delay(event -> {
-                            textoEnJuegoArriba.setText(""); textoEnJuegoArriba.setTextFill(Color.WHITE);
-                            textoEnJuegoAbajo.setText(""); textoEnJuegoAbajo.setTextFill(Color.WHITE);
+                            textoEnJuegoArriba.setTextFill(Color.WHITE);
+                            textoEnJuegoAbajo.setTextFill(Color.WHITE);
                         }, 6);
+
 
                     }
                     else {
@@ -201,10 +205,12 @@ public class GameController {
                             textoEnJuegoAbajo.setText(puntos + " puntos");
                             textoEnJuegoAbajo.setFont(customFont80);
 
-                            puntos += jugador.getPuntaje();
+                            puntos += jugador.getPuntajeTotal();
 
                             juego.setGanador(jugador);
-                            jugador.setPuntaje(puntos);
+                            jugador.setPuntajeTotal(puntos);
+                            jugador.setPartidasGanadas(jugador.getPartidasGanadas()+1);
+                            jugador.actualizarPuntajePromedio();
                             return;
                         }
                         else{
@@ -237,7 +243,8 @@ public class GameController {
             switch (cartaActual.getTipo()){
                 case "CC":
 
-                    juego.setColorActual(cpu.escogerColor());
+                    //juego.setColorActual(cpu.escogerColor());
+                    juego.setColorActual(elegirColorMasRepetido(cpu));
                     textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
 
                     break;
@@ -247,7 +254,7 @@ public class GameController {
                         contenedorJ.agregarBoton(contenedorJ.crearBoton(jugador.getCartas().getTope()));
                     }
 
-                    juego.setColorActual(cpu.escogerColor());
+                    juego.setColorActual(elegirColorMasRepetido(cpu));
                     textoEnJuegoArriba.setText("Color escogido: " + juego.getColorActual());
 
                     textoEnJuegoAbajo.setText("¡CPU repite turno!");
@@ -290,10 +297,12 @@ public class GameController {
                     textoEnJuegoAbajo.setText(puntos + " puntos");
                     textoEnJuegoAbajo.setFont(customFont80);
 
-                    puntos += cpu.getPuntaje();
+                    puntos += cpu.getPuntajeTotal();
 
                     juego.setGanador(cpu);
-                    cpu.setPuntaje(puntos);
+                    cpu.setPuntajeTotal(puntos);
+                    cpu.setPartidasGanadas(cpu.getPartidasGanadas()+1);
+                    cpu.actualizarPuntajePromedio();
 
                     return;
                 }
@@ -398,6 +407,7 @@ public class GameController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     public static void guardarUsuario(Jugador j) throws IOException {
@@ -450,10 +460,14 @@ public class GameController {
             }, 2);
 
             delay(event -> { btnCantarUno.setVisible(false); }, 2 );
+            delay(event -> { jugadaCPU(); }, 2);
             delay(event -> {
-                textoEnJuegoArriba.setText(""); textoEnJuegoArriba.setTextFill(Color.WHITE);
-                textoEnJuegoAbajo.setText(""); textoEnJuegoAbajo.setTextFill(Color.WHITE);
+//                textoEnJuegoArriba.setText("");
+//                textoEnJuegoAbajo.setText("");
+                textoEnJuegoArriba.setTextFill(Color.WHITE);
+                textoEnJuegoAbajo.setTextFill(Color.WHITE);
             }, 6);
+
 
         }
         else {
@@ -471,15 +485,107 @@ public class GameController {
                 textoEnJuegoAbajo.setText(puntos + " puntos");
                 textoEnJuegoAbajo.setFont(customFont80);
 
-                puntos += jugador.getPuntaje();
+                puntos += jugador.getPuntajeTotal();
 
                 juego.setGanador(jugador);
-                jugador.setPuntaje(puntos);
+                jugador.setPuntajeTotal(puntos);
+                jugador.setPartidasGanadas(jugador.getPartidasGanadas()+1);
+                jugador.actualizarPuntajePromedio();
+                return;
+            }
+            else{
+                delay(event -> { jugadaCPU(); }, 1);
+            }
+        }
+    }
+
+    public void cantarUnoYRepetir(){
+        if(jugador.getCartas().getMazo().size() == 1){
+            btnCantarUno.setVisible(true);
+            btnCantarUno.setDisable(false);
+
+            delay( event -> { btnCantarUno.setVisible(false); }, 2);
+
+            delay(event -> {
+                if(btnCantarUno.isDisabled() == false){
+                    textoEnJuegoArriba.setTextFill(Color.ORANGE); textoEnJuegoArriba.setText("¡No has cantado uno!");
+                    textoEnJuegoAbajo.setTextFill(Color.ORANGE); textoEnJuegoAbajo.setText("Fuiste penalizado con +2 cartas");
+
+                    for(int i = 0; i < 2; i++){
+                        jugador.agarrarCarta(juego);
+                        contenedorJ.agregarBoton(contenedorJ.crearBoton(jugador.getCartas().getTope()));
+                    }
+                }
+            }, 2);
+
+            delay(event -> { btnCantarUno.setVisible(false); }, 2 );
+            delay(event -> {
+                textoEnJuegoArriba.setTextFill(Color.WHITE);
+                textoEnJuegoAbajo.setTextFill(Color.WHITE);
+            }, 6);
+
+
+        }
+        else {
+            if (jugador.getCartas().getMazo().isEmpty()) {
+
+                contenedorC.setDisable(true);
+                contenedorJ.setDisable(true);
+                botonAgarrarCarta.setDisable(true);
+                textoAgarrarCarta.setDisable(true);
+                textoEnJuegoArriba.setText("¡" + nombreUsuario + " ha ganado!");
+                textoEnJuegoArriba.setFont(customFont80);
+
+                int puntos = obtenerPuntosGanador(cpu);
+
+                textoEnJuegoAbajo.setText(puntos + " puntos");
+                textoEnJuegoAbajo.setFont(customFont80);
+
+                puntos += jugador.getPuntajeTotal();
+
+                juego.setGanador(jugador);
+                jugador.setPuntajeTotal(puntos);
+                jugador.setPartidasGanadas(jugador.getPartidasGanadas()+1);
+                jugador.actualizarPuntajePromedio();
                 return;
             }
             else{
 
             }
         }
+    }
+
+    public char elegirColorMasRepetido(Jugador j) {
+        int Y = 0;
+        int B = 0;
+        int R = 0;
+        int G = 0;
+
+        for(Carta c : j.getCartas().getMazo()){
+            switch(c.getColor()){
+                case 'Y': Y++;
+                    break;
+                case 'B': B++;
+                    break;
+                case 'R': R++;
+                    break;
+                case 'G': G++;
+                    break;
+            }
+        }
+
+        int mayor = 0;
+        int[] repeticiones = {Y, B, R, G};
+        char[] colores = {'Y', 'B', 'R', 'G'};
+        char colorEscogido = ' ';
+
+        for(int i = 0; i < 4; i++){
+            if(repeticiones[i] > mayor){
+                mayor = repeticiones[i];
+                colorEscogido = colores[i];
+            }
+        }
+
+        return colorEscogido;
     }
 }

@@ -21,7 +21,6 @@ public class UnoGame extends Application {
     public static final Font customFont40 = Font.loadFont(UnoGame.class.getResourceAsStream("/views/recursos/MinecraftRegular-Bmg3.otf"), 40);
     public static final Font customFont80 = Font.loadFont(UnoGame.class.getResourceAsStream("/views/recursos/MinecraftRegular-Bmg3.otf"), 80);
 
-
     @Override
     public void start(Stage stage) throws IOException {
         try{
